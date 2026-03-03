@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="description" content="JD Pipe Sales - Venta de tuberías, conexiones, válvulas, accesorios de bronce, medidores y soportería para la industria">
-  <title>Jedi · Pipe Sales | Todo en tuberías</title>
+  <title>Jedi · Pipe Sales</title>
 
   <!-- Fuentes modernas -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,1338 +14,9 @@
   
   <!-- AOS (Animate On Scroll) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <style>
-    /* ===== RESET Y PALETA DE COLORES ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --fondo-principal: #f5f3f0;
-      --texto-oscuro: #1e2b2f;
-      --azul-profundo: #0f3b4a;
-      --naranja-terracota: #c4462b;
-      --ocre-dorado: #d9a13b;
-      --blanco-rotura: #fefcf7;
-      --gris-suave: #e8e6e1;
-      --sombra-suave: 0 20px 30px -10px rgba(0, 20, 20, 0.15);
-      --sombra-tarjeta: 0 8px 20px rgba(0,0,0,0.06);
-      --sombra-hover: 0 25px 40px -15px rgba(0,0,0,0.3);
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--fondo-principal);
-      color: var(--texto-oscuro);
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
-
-    body.menu-abierto {
-      overflow: hidden;
-    }
-
-    /* ===== ANIMACIONES GLOBALES ===== */
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0px); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes fadeInRight {
-      from {
-        opacity: 0;
-        transform: translateX(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes zoomIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    /* ===== HEADER SIN ANIMACIONES ===== */
-    .header {
-      background: var(--azul-profundo);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      border-bottom: 3px solid var(--ocre-dorado);
-      transition: all 0.3s ease;
-    }
-
-    .header.scrolled {
-      padding: 0.3rem 0;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    }
-
-    .header-container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0.5rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo img {
-      height: 68px;
-      width: auto;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .logo img:hover {
-      transform: scale(1.05);
-    }
-
-    /* ===== NAVEGACIÓN ===== */
-    .nav {
-      display: flex;
-      gap: 2.8rem;
-      align-items: center;
-    }
-
-    .nav-link {
-      text-decoration: none;
-      color: var(--blanco-rotura);
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-      position: relative;
-      transition: color 0.3s ease;
-      background: none;
-      border: none;
-      font-family: inherit;
-      text-transform: uppercase;
-      cursor: pointer;
-      padding: 0.5rem 0;
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--ocre-dorado);
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover {
-      color: var(--ocre-dorado);
-    }
-
-    .nav-link:hover::after {
-      width: 80%;
-    }
-
-    /* ===== DROPDOWN ===== */
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown .nav-link i {
-      font-size: 0.7rem;
-      transition: transform 0.3s ease;
-    }
-
-    .dropdown:hover .nav-link i {
-      transform: rotate(180deg);
-    }
-
-    .submenu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--blanco-rotura);
-      min-width: 250px;
-      border-radius: 0 0 16px 16px;
-      box-shadow: var(--sombra-suave);
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      z-index: 1001;
-      margin-top: 0.5rem;
-      border-top: 3px solid var(--naranja-terracota);
-    }
-
-    .dropdown:hover .submenu {
-      display: flex;
-      animation: fadeInDown 0.3s ease;
-    }
-
-    .submenu a {
-      padding: 14px 20px;
-      text-decoration: none;
-      color: var(--azul-profundo);
-      font-weight: 500;
-      transition: all 0.3s ease;
-      border-left: 3px solid transparent;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .submenu a i {
-      width: 20px;
-      color: var(--naranja-terracota);
-      transition: transform 0.3s ease;
-    }
-
-    .submenu a:hover {
-      background: #f0ebe4;
-      border-left-color: var(--naranja-terracota);
-      color: var(--naranja-terracota);
-      padding-left: 25px;
-    }
-
-    .submenu a:hover i {
-      transform: translateX(3px);
-      color: var(--ocre-dorado);
-    }
-
-    /* ===== HAMBURGUESA ===== */
-    .hamburger {
-      display: none;
-      font-size: 2rem;
-      background: none;
-      border: none;
-      color: var(--blanco-rotura);
-      cursor: pointer;
-      z-index: 1001;
-      width: 44px;
-      height: 44px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .hamburger:hover {
-      background: rgba(255,255,255,0.1);
-      transform: scale(1.05);
-    }
-
-    .hamburger:active {
-      transform: scale(0.95);
-    }
-
-    /* ===== HERO SLIDER ===== */
-    .hero-slider {
-      margin-top: 86px;
-      position: relative;
-      width: 100%;
-      height: 550px;
-      overflow: hidden;
-    }
-
-    .slider-container {
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.8s ease, transform 0.8s ease;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      transform: scale(1.05);
-    }
-
-    .slide.active {
-      opacity: 1;
-      visibility: visible;
-      transform: scale(1);
-    }
-
-    .slide::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(145deg, rgba(15, 59, 74, 0.9) 0%, rgba(196, 70, 43, 0.7) 80%);
-      z-index: 1;
-    }
-
-    .slide-content {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      padding: 2rem;
-      color: white;
-    }
-
-    .slide.active .slide-content {
-      animation: fadeInUp 1s ease;
-    }
-
-    .slide-content h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    }
-
-    .slide-content p {
-      font-size: clamp(1rem, 2vw, 1.3rem);
-      margin-bottom: 2rem;
-      opacity: 0.95;
-      font-weight: 400;
-    }
-
-    .btn-slider {
-      display: inline-block;
-      padding: 1rem clamp(1.5rem, 3vw, 2.8rem);
-      background: var(--ocre-dorado);
-      color: var(--azul-profundo);
-      text-decoration: none;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      box-shadow: 0 8px 20px rgba(217, 161, 59, 0.3);
-    }
-
-    .btn-slider:hover {
-      background: transparent;
-      border-color: white;
-      color: white;
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    }
-
-    .slider-controls {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      display: flex;
-      gap: 15px;
-    }
-
-    .slider-dot {
-      width: clamp(30px, 5vw, 50px);
-      height: 4px;
-      background: rgba(255,255,255,0.4);
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-radius: 2px;
-    }
-    
-    .slider-dot.active {
-      background: var(--ocre-dorado);
-      width: clamp(40px, 7vw, 70px);
-    }
-
-    .slider-dot:hover {
-      background: var(--ocre-dorado);
-      transform: scaleY(1.2);
-    }
-
-    .slider-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: clamp(40px, 5vw, 48px);
-      height: clamp(40px, 5vw, 48px);
-      background: rgba(255,255,255,0.15);
-      border: 2px solid rgba(255,255,255,0.5);
-      border-radius: 50%;
-      cursor: pointer;
-      color: white;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-      z-index: 10;
-      backdrop-filter: blur(5px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .slider-arrow:hover {
-      background: var(--ocre-dorado);
-      border-color: var(--ocre-dorado);
-      color: var(--azul-profundo);
-      transform: translateY(-50%) scale(1.1);
-      box-shadow: 0 0 20px rgba(217, 161, 59, 0.5);
-    }
-
-    .slider-arrow.prev { left: clamp(10px, 3vw, 30px); }
-    .slider-arrow.next { right: clamp(10px, 3vw, 30px); }
-
-    /* ===== SECCIÓN DE PRODUCTOS ===== */
-    .productos-section {
-      padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
-      background: var(--fondo-principal);
-    }
-
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: clamp(2rem, 5vw, 3.5rem);
-    }
-
-    .section-header .sub {
-      display: inline-block;
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 4px;
-      color: var(--naranja-terracota);
-      text-transform: uppercase;
-      background: rgba(196, 70, 43, 0.08);
-      padding: 0.3rem 1.2rem;
-      border-radius: 30px;
-      margin-bottom: 1rem;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .section-header h2 {
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      font-weight: 800;
-      color: var(--azul-profundo);
-    }
-
-    .section-header h2 span {
-      color: var(--naranja-terracota);
-      border-bottom: 4px solid var(--ocre-dorado);
-      padding-bottom: 4px;
-      display: inline-block;
-    }
-
-    .productos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .producto-card {
-      background: var(--blanco-rotura);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: var(--sombra-tarjeta);
-      transition: all 0.4s ease;
-      border: 1px solid rgba(217, 161, 59, 0.2);
-      opacity: 0;
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
-    .producto-card:nth-child(1) { animation-delay: 0.1s; }
-    .producto-card:nth-child(2) { animation-delay: 0.2s; }
-    .producto-card:nth-child(3) { animation-delay: 0.3s; }
-
-    .producto-card:hover {
-      transform: translateY(-12px);
-      box-shadow: var(--sombra-hover);
-      border-color: var(--ocre-dorado);
-    }
-
-    .producto-imagen {
-      height: 220px;
-      overflow: hidden;
-      position: relative;
-      background: var(--gris-suave);
-    }
-
-    .producto-imagen img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
-    .producto-card:hover .producto-imagen img {
-      transform: scale(1.1);
-    }
-
-    .producto-imagen::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--ocre-dorado), var(--naranja-terracota));
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
-    }
-
-    .producto-card:hover .producto-imagen::after {
-      transform: scaleX(1);
-    }
-
-    .producto-info {
-      padding: 1.8rem 1.5rem 1.5rem;
-    }
-
-    .producto-categoria {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--naranja-terracota);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-      background: rgba(196, 70, 43, 0.1);
-      padding: 0.2rem 0.8rem;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .producto-card:hover .producto-categoria {
-      background: var(--naranja-terracota);
-      color: white;
-    }
-
-    .producto-info h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--azul-profundo);
-      margin-bottom: 0.5rem;
-      transition: color 0.3s ease;
-    }
-
-    .producto-card:hover .producto-info h3 {
-      color: var(--naranja-terracota);
-    }
-
-    .producto-descripcion {
-      color: #4a5c63;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-
-    .btn-producto {
-      display: inline-block;
-      width: 100%;
-      padding: 0.8rem;
-      background: var(--azul-profundo);
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      border: 2px solid var(--azul-profundo);
-      text-align: center;
-      font-size: 0.9rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-producto::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s ease, height 0.6s ease;
-    }
-
-    .btn-producto:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-
-    .btn-producto i {
-      margin-right: 0.5rem;
-      color: var(--ocre-dorado);
-      transition: transform 0.3s ease;
-    }
-
-    .btn-producto:hover i {
-      transform: translateX(3px);
-    }
-
-    .btn-producto:hover {
-      background: transparent;
-      color: var(--azul-profundo);
-    }
-
-    .ver-mas-container {
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .btn-ver-mas {
-      display: inline-block;
-      padding: 1rem clamp(1.5rem, 4vw, 2.5rem);
-      background: transparent;
-      color: var(--azul-profundo);
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      border: 2px solid var(--azul-profundo);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .btn-ver-mas::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--azul-profundo);
-      transition: left 0.3s ease;
-      z-index: -1;
-    }
-
-    .btn-ver-mas:hover::before {
-      left: 0;
-    }
-
-    .btn-ver-mas:hover {
-      color: white;
-    }
-
-    .btn-ver-mas i {
-      margin-left: 0.5rem;
-      transition: transform 0.3s ease;
-    }
-
-    .btn-ver-mas:hover i {
-      transform: translateX(5px);
-    }
-
-    /* ===== MARCAS ===== */
-    .marcas-section {
-      padding: clamp(3rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
-      background: white;
-    }
-
-    .marcas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: clamp(1rem, 3vw, 2rem);
-      align-items: center;
-      justify-items: center;
-    }
-
-    .marca-item {
-      filter: grayscale(100%);
-      opacity: 0.6;
-      transition: all 0.4s ease;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
-    .marca-item:nth-child(1) { animation-delay: 0.1s; }
-    .marca-item:nth-child(2) { animation-delay: 0.2s; }
-    .marca-item:nth-child(3) { animation-delay: 0.3s; }
-    .marca-item:nth-child(4) { animation-delay: 0.4s; }
-    .marca-item:nth-child(5) { animation-delay: 0.5s; }
-    .marca-item:nth-child(6) { animation-delay: 0.6s; }
-
-    .marca-item:hover {
-      filter: grayscale(0);
-      opacity: 1;
-      transform: scale(1.1);
-    }
-
-    .marca-item img {
-      max-width: 120px;
-      width: 100%;
-      height: auto;
-    }
-
-    /* ===== BENEFICIOS ===== */
-    .beneficios-section {
-      padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
-      background: var(--azul-profundo);
-      color: white;
-    }
-
-    .beneficios-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: clamp(1rem, 3vw, 2rem);
-    }
-
-    .beneficio-item {
-      text-align: center;
-      padding: 2rem 1rem;
-      border-radius: 20px;
-      transition: all 0.4s ease;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
-    .beneficio-item:nth-child(1) { animation-delay: 0.1s; }
-    .beneficio-item:nth-child(2) { animation-delay: 0.2s; }
-    .beneficio-item:nth-child(3) { animation-delay: 0.3s; }
-    .beneficio-item:nth-child(4) { animation-delay: 0.4s; }
-
-    .beneficio-item:hover {
-      background: rgba(255,255,255,0.1);
-      transform: translateY(-5px);
-    }
-
-    .beneficio-icono {
-      font-size: 2.5rem;
-      color: var(--ocre-dorado);
-      margin-bottom: 1.2rem;
-      transition: all 0.3s ease;
-    }
-
-    .beneficio-item:hover .beneficio-icono {
-      transform: scale(1.2) rotate(5deg);
-      color: white;
-    }
-
-    /* ===== SOBRE NOSOTROS ===== */
-    .about-section {
-      padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
-      background: var(--fondo-principal);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: clamp(2rem, 6vw, 4rem);
-      align-items: center;
-    }
-
-    .about-content {
-      opacity: 0;
-      animation: fadeInLeft 0.8s ease forwards;
-    }
-
-    .about-image {
-      opacity: 0;
-      animation: fadeInRight 0.8s ease forwards;
-    }
-
-    .about-content .etiqueta {
-      display: inline-block;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--naranja-terracota);
-      background: rgba(196, 70, 43, 0.05);
-      padding: 0.3rem 1rem;
-      border-radius: 50px;
-      margin-bottom: 1rem;
-    }
-
-    .about-content h2 {
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      font-weight: 800;
-      line-height: 1.1;
-      color: var(--azul-profundo);
-      margin-bottom: 1.5rem;
-    }
-
-    .about-content h2 .destacado {
-      color: var(--naranja-terracota);
-      position: relative;
-      display: inline-block;
-    }
-    
-    .about-content h2 .destacado::before {
-      content: '';
-      position: absolute;
-      bottom: 5px;
-      left: 0;
-      width: 100%;
-      height: 12px;
-      background: var(--ocre-dorado);
-      opacity: 0.3;
-      z-index: -1;
-      border-radius: 20px;
-    }
-
-    .about-text {
-      color: #2f3f46;
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
-      line-height: 1.7;
-    }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .stat {
-      text-align: center;
-      padding: 1rem;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .stat:hover {
-      background: white;
-      box-shadow: var(--sombra-tarjeta);
-      transform: translateY(-5px);
-    }
-
-    .stat-numero {
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      font-weight: 800;
-      color: var(--naranja-terracota);
-      transition: all 0.3s ease;
-    }
-
-    .stat:hover .stat-numero {
-      color: var(--ocre-dorado);
-    }
-
-    .btn-about {
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem clamp(1.5rem, 4vw, 2.2rem);
-      background: var(--azul-profundo);
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 40px;
-      transition: all 0.3s ease;
-      border: 2px solid var(--azul-profundo);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .btn-about::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--ocre-dorado);
-      transition: left 0.3s ease;
-      z-index: -1;
-    }
-
-    .btn-about:hover::before {
-      left: 0;
-    }
-
-    .btn-about:hover {
-      border-color: var(--ocre-dorado);
-      color: var(--azul-profundo);
-    }
-
-    .btn-about:hover i {
-      transform: translateX(3px);
-      color: var(--azul-profundo);
-    }
-
-    .about-image {
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: 0 25px 40px -15px rgba(0,0,0,0.3);
-      border: 5px solid var(--ocre-dorado);
-      transition: all 0.3s ease;
-    }
-
-    .about-image:hover {
-      transform: scale(1.02);
-      box-shadow: 0 30px 50px -15px rgba(0,0,0,0.4);
-    }
-
-    .about-image img {
-      width: 100%;
-      height: clamp(300px, 50vw, 550px);
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-
-    .about-image:hover img {
-      transform: scale(1.05);
-    }
-
-    /* ===== CONTACTO ===== */
-    .contacto-seccion {
-      background: var(--azul-profundo);
-      padding: clamp(3rem, 8vw, 4rem) clamp(1rem, 4vw, 2rem);
-      color: white;
-    }
-
-    .contacto-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: clamp(2rem, 5vw, 3rem);
-      align-items: start;
-    }
-
-    .contacto-info {
-      opacity: 0;
-      animation: fadeInLeft 0.8s ease forwards;
-    }
-
-    .contacto-formulario {
-      opacity: 0;
-      animation: fadeInRight 0.8s ease forwards;
-    }
-
-    .contacto-info h3 {
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: var(--ocre-dorado);
-    }
-
-    .contacto-detalle {
-      display: flex;
-      gap: 1.2rem;
-      margin-bottom: 2rem;
-      align-items: center;
-      transition: all 0.3s ease;
-      padding: 1rem;
-      border-radius: 12px;
-    }
-
-    .contacto-detalle:hover {
-      background: rgba(255,255,255,0.1);
-      transform: translateX(10px);
-    }
-
-    .contacto-detalle i {
-      font-size: 1.8rem;
-      color: var(--ocre-dorado);
-      width: 40px;
-      transition: all 0.3s ease;
-    }
-
-    .contacto-detalle:hover i {
-      transform: scale(1.2);
-    }
-
-    .contacto-detalle p {
-      font-size: 1.1rem;
-      line-height: 1.5;
-    }
-
-    .contacto-formulario {
-      background: rgba(255,255,255,0.05);
-      padding: clamp(1.5rem, 4vw, 2rem);
-      border-radius: 30px;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(217, 161, 59, 0.3);
-      transition: all 0.3s ease;
-    }
-
-    .contacto-formulario:hover {
-      border-color: var(--ocre-dorado);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-
-    .contacto-formulario h4 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      color: var(--ocre-dorado);
-    }
-
-    .campo {
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 12px;
-      color: white;
-      font-family: inherit;
-      transition: all 0.3s ease;
-    }
-
-    .campo:focus {
-      outline: none;
-      border-color: var(--ocre-dorado);
-      background: rgba(255,255,255,0.15);
-      transform: scale(1.02);
-    }
-
-    .campo::placeholder {
-      color: rgba(255,255,255,0.6);
-    }
-
-    .btn-enviar {
-      background: var(--ocre-dorado);
-      color: var(--azul-profundo);
-      border: none;
-      padding: 1rem 2rem;
-      font-weight: 700;
-      border-radius: 40px;
-      cursor: pointer;
-      width: 100%;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .btn-enviar::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--naranja-terracota);
-      transition: left 0.3s ease;
-      z-index: -1;
-    }
-
-    .btn-enviar:hover::before {
-      left: 0;
-    }
-
-    .btn-enviar:hover {
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-
-    /* ===== FOOTER SIN ANIMACIONES ===== */
-    .footer {
-      background: #0a2a35;
-      color: white;
-      padding: clamp(2rem, 6vw, 3rem) clamp(1rem, 4vw, 2rem) 1.5rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: clamp(1.5rem, 5vw, 3rem);
-      margin-bottom: 2rem;
-    }
-
-    .footer-logo img {
-      height: clamp(40px, 6vw, 50px);
-      margin-bottom: 1rem;
-      transition: transform 0.3s ease;
-    }
-
-    .footer-logo img:hover {
-      transform: scale(1.05);
-    }
-
-    .footer-logo p {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .footer-col h4 {
-      color: var(--ocre-dorado);
-      font-size: 1.1rem;
-      margin-bottom: 1.2rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    .footer-col h4::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 40px;
-      height: 2px;
-      background: var(--ocre-dorado);
-      transition: width 0.3s ease;
-    }
-
-    .footer-col:hover h4::after {
-      width: 100%;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-col ul li a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-      display: inline-block;
-    }
-
-    .footer-col ul li a:hover {
-      color: var(--ocre-dorado);
-      transform: translateX(5px);
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .footer-social a {
-      width: 36px;
-      height: 36px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .footer-social a:hover {
-      background: var(--ocre-dorado);
-      color: var(--azul-profundo);
-      transform: translateY(-3px);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.6);
-      font-size: 0.9rem;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 900px) {
-      .hamburger {
-        display: flex;
-      }
-
-      .nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: min(320px, 80%);
-        height: 100vh;
-        background: var(--azul-profundo);
-        flex-direction: column;
-        padding: 6rem 2rem 2rem;
-        gap: 1rem;
-        transition: right 0.4s ease;
-        box-shadow: -5px 0 30px rgba(0,0,0,0.3);
-        align-items: flex-start;
-        overflow-y: auto;
-        z-index: 1000;
-      }
-
-      .nav.active {
-        right: 0;
-      }
-
-      .nav-link {
-        font-size: 1.2rem;
-        width: 100%;
-        text-align: left;
-        padding: 0.8rem 0;
-      }
-
-      .dropdown {
-        width: 100%;
-      }
-
-      .dropdown .nav-link {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-      }
-
-      .submenu {
-        position: static;
-        background: rgba(255,255,255,0.1);
-        min-width: 100%;
-        border-radius: 8px;
-        box-shadow: none;
-        margin-top: 0.5rem;
-        border-top: none;
-        display: none;
-      }
-
-      .dropdown.active .submenu {
-        display: flex;
-        animation: fadeInDown 0.3s ease;
-      }
-
-      .submenu a {
-        color: white;
-        padding: 12px 20px;
-      }
-
-      .submenu a i {
-        color: var(--ocre-dorado);
-      }
-
-      .submenu a:hover {
-        background: rgba(255,255,255,0.15);
-        color: white;
-      }
-
-      .hero-slider {
-        margin-top: 82px;
-        height: clamp(300px, 50vh, 400px);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .header-container {
-        padding: 0.5rem 1rem;
-      }
-
-      .hero-slider {
-        height: 300px;
-      }
-
-      .producto-card {
-        max-width: 100%;
-      }
-
-      .about-image {
-        border-width: 3px;
-      }
-
-      .footer-social {
-        justify-content: center;
-      }
-    }
-
-    /* ===== AOS ANIMATIONS ===== */
-    [data-aos="fade-up"] {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    [data-aos="fade-up"].aos-animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    [data-aos="fade-right"] {
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    [data-aos="fade-right"].aos-animate {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    [data-aos="fade-left"] {
-      opacity: 0;
-      transform: translateX(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    [data-aos="fade-left"].aos-animate {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    [data-aos="zoom-in"] {
-      opacity: 0;
-      transform: scale(0.9);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    [data-aos="zoom-in"].aos-animate {
-      opacity: 1;
-      transform: scale(1);
-    }
-  </style>
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/footer.css">
 </head>
 <body>
 
@@ -1357,18 +28,10 @@
     <nav class="nav" id="nav">
       <a href="index.html" class="nav-link">INICIO</a>
       <div class="dropdown" id="productosDropdown">
+        <a href="Productos.html">
         <button class="nav-link" id="dropdownBtn">
-          PRODUCTOS <i class="fas fa-chevron-down"></i>
-        </button>
-          <div class="submenu">
-            <a href="productos.html?categoria=tuberia-galvanizada"><i class="fas fa-pipe"></i> Tubería Galvanizada</a>
-            <a href="productos.html?categoria=valvulas"><i class="fas fa-valve"></i> Válvulas y Llaves</a>
-            <a href="productos.html?categoria=bronce"><i class="fas fa-tools"></i> Accesorios de Bronce</a>
-            <a href="productos.html?categoria=medidores"><i class="fas fa-tachometer-alt"></i> Medidores y Válvulas</a>
-            <a href="productos.html?categoria=tuberia-acero"><i class="fas fa-pipe"></i> Tubería de Acero</a>
-            <a href="productos.html?categoria=fierro-fundido"><i class="fas fa-bolt"></i> Conexiones Fierro Fundido</a>
-            <a href="productos.html?categoria=soporteria"><i class="fas fa-clipboard"></i> Soportería</a>
-          </div>
+          PRODUCTOS 
+        </button></a>
       </div>
       <a href="Nosotros.html" class="nav-link">SOBRE MI</a>
       <a href="Contacto.html" class="nav-link">CONTACTO</a>
@@ -1384,25 +47,25 @@
   <!-- Slider principal -->
   <section class="hero-slider">
     <div class="slider-container" id="slider">
-      <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format')">
+      <div class="slide active" style="background-image: url('Imagenes/index/Slider1.png')">
         <div class="slide-content">
           <h1 data-aos="fade-up" data-aos-duration="800">Todo en tuberías y conexiones</h1>
-          <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">Más de 5,000 productos en inventario para entrega inmediata</p>
-          <a href="#productos" class="btn-slider" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="800">VER CATÁLOGO</a>
+          <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">Contamos con todo tipo de productos para tus nececidades.</p>
+          <a href="Productos.html" class="btn-slider" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="800">VER PRODUCTOS</a>
         </div>
       </div>
-      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format')">
+      <div class="slide" style="background-image: url('Imagenes/index/Slider2.png')">
         <div class="slide-content">
           <h1 data-aos="fade-up" data-aos-duration="800">Tubería galvanizada y de acero</h1>
           <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">Certificación ASTM, todas las cédulas y diámetros</p>
-          <a href="#tuberias" class="btn-slider" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="800">VER TUBERÍAS</a>
+          <a href="Productos.html" class="btn-slider" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="800">VER TUBERÍAS</a>
         </div>
       </div>
-      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format')">
+      <div class="slide" style="background-image: url('Imagenes/index/Slider3.png')">
         <div class="slide-content">
           <h1 data-aos="fade-up" data-aos-duration="800">Válvulas y accesorios de bronce</h1>
           <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">Compuerta, globo, check, esfera y llaves de nariz</p>
-          <a href="#valvulas" class="btn-slider" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="800">VER VÁLVULAS</a>
+          <a href="Productos.html" class="btn-slider" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="800">VER VÁLVULAS</a>
         </div>
       </div>
     </div>
@@ -1420,47 +83,44 @@
     <div class="container">
       <div class="section-header">
         <span class="sub" data-aos="fade-down">PRODUCTOS DESTACADOS</span>
-        <h2 data-aos="zoom-in">Lo más <span>buscado</span></h2>
-        <p data-aos="fade-up" data-aos-delay="200">Los productos que nuestros clientes prefieren</p>
+        <h2 data-aos="zoom-in">Nuestros <span>productos</span></h2>
+        <p data-aos="fade-up" data-aos-delay="200">Productos que se tienen a la venta.</p>
       </div>
       
       <div class="productos-grid">
         <!-- Tubería Galvanizada -->
         <div class="producto-card" data-aos="fade-up" data-aos-delay="100">
           <div class="producto-imagen">
-            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format" alt="Tubería galvanizada">
+            <img src="Imagenes/index/Galvanizada.png" alt="Tubería galvanizada">
           </div>
           <div class="producto-info">
             <span class="producto-categoria">TUBERÍA GALVANIZADA</span>
             <h3>Tubería Galvanizada C-40</h3>
             <p class="producto-descripcion">Tubería de acero galvanizado por inmersión en caliente. Ideal para líneas de agua, gas y estructuras.</p>
-            <a href="#" class="btn-producto"><i class="fas fa-shopping-cart"></i> SOLICITAR COTIZACIÓN</a>
           </div>
         </div>
 
         <!-- Válvulas -->
         <div class="producto-card" data-aos="fade-up" data-aos-delay="200">
           <div class="producto-imagen">
-            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format" alt="Válvulas">
+            <img src="Imagenes/index/Slider3.png" alt="Válvulas">
           </div>
           <div class="producto-info">
             <span class="producto-categoria">VÁLVULAS</span>
             <h3>Válvulas Industriales</h3>
             <p class="producto-descripcion">Válvulas de compuerta, globo, check, esfera y llaves de nariz en bronce, acero y hierro.</p>
-            <a href="#" class="btn-producto"><i class="fas fa-shopping-cart"></i> SOLICITAR COTIZACIÓN</a>
           </div>
         </div>
 
         <!-- Accesorios de Bronce -->
         <div class="producto-card" data-aos="fade-up" data-aos-delay="300">
           <div class="producto-imagen">
-            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format" alt="Accesorios bronce">
+            <img src="Imagenes/index/Accesorios.png" alt="Accesorios">
           </div>
           <div class="producto-info">
-            <span class="producto-categoria">ACCESORIOS BRONCE</span>
-            <h3>Accesorios de Bronce</h3>
+            <span class="producto-categoria">ACCESORIOS</span>
+            <h3>Accesorios</h3>
             <p class="producto-descripcion">Codos, tes, reducciones, uniones, tapones y adaptadores en bronce de alta resistencia.</p>
-            <a href="#" class="btn-producto"><i class="fas fa-shopping-cart"></i> SOLICITAR COTIZACIÓN</a>
           </div>
         </div>
       </div>
@@ -1479,12 +139,12 @@
         <h2 data-aos="zoom-in">Trabajamos con las <span>mejores</span></h2>
       </div>
       <div class="marcas-grid">
-        <div class="marca-item" data-aos="fade-up" data-aos-delay="100"><img src="https://via.placeholder.com/120x60?text=Tupy" alt="Tupy"></div>
-        <div class="marca-item" data-aos="fade-up" data-aos-delay="200"><img src="https://via.placeholder.com/120x60?text=Nibco" alt="Nibco"></div>
-        <div class="marca-item" data-aos="fade-up" data-aos-delay="300"><img src="https://via.placeholder.com/120x60?text=Apolo" alt="Apolo"></div>
-        <div class="marca-item" data-aos="fade-up" data-aos-delay="400"><img src="https://via.placeholder.com/120x60?text=Genebre" alt="Genebre"></div>
-        <div class="marca-item" data-aos="fade-up" data-aos-delay="500"><img src="https://via.placeholder.com/120x60?text=Conbraco" alt="Conbraco"></div>
-        <div class="marca-item" data-aos="fade-up" data-aos-delay="600"><img src="https://via.placeholder.com/120x60?text=Milwaukee" alt="Milwaukee"></div>
+        <div class="marca-item" data-aos="fade-up" data-aos-delay="100"><img src="Imagenes/index/ALFA.jpg" alt="Alfa"></div>
+        <div class="marca-item" data-aos="fade-up" data-aos-delay="200"><img src="Imagenes/index/ARES.jpg" alt="Ares"></div>
+        <div class="marca-item" data-aos="fade-up" data-aos-delay="300"><img src="Imagenes/index/EL ROSARIO.jpg" alt="El Rosario"></div>
+        <div class="marca-item" data-aos="fade-up" data-aos-delay="400"><img src="Imagenes/index/PROTOR.png" alt="Protor"></div>
+        <div class="marca-item" data-aos="fade-up" data-aos-delay="500"><img src="Imagenes/index/RUGO.jpg" alt="Rugo"></div>
+        <div class="marca-item" data-aos="fade-up" data-aos-delay="600"><img src="Imagenes/index/VILLAREAL.jpg" alt="Villareal"></div>
       </div>
     </div>
   </section>
@@ -1523,14 +183,15 @@
       <div class="about-grid">
         <div class="about-content">
           <span class="etiqueta" data-aos="fade-right">SOBRE MI</span>
-          <h2 data-aos="fade-right" data-aos-delay="100">Experto en <span class="destacado">tuberías</span> desde 2008</h2>
-          <p class="about-text" data-aos="fade-right" data-aos-delay="200">En JD Pipe Sales nos dedicamos 100% a la venta de tuberías, conexiones, válvulas y accesorios. No instalamos, nos especializamos en ofrecerte los mejores productos con el respaldo técnico que necesitas.</p>
-          <p class="about-text" data-aos="fade-right" data-aos-delay="300">Trabajamos con más de 50 marcas nacionales e internacionales y mantenemos un inventario de más de 5,000 productos para entregarte en el menor tiempo posible.</p>
+          <h2 data-aos="fade-right" data-aos-delay="100">Experto en <span class="destacado">tuberías</span></h2>
+          <p class="about-text" data-aos="fade-right" data-aos-delay="200">En JD Pipe Sales nos dedicamos 100% a la venta de tuberías, conexiones, válvulas y accesorios. Nos especializamos en ofrecerte los mejores productos con el respaldo técnico que necesitas.</p>
+          <p class="about-text" data-aos="fade-right" data-aos-delay="300">
+          Nuestra prioridad es el suministro estratégico de tuberías, conexiones, válvulas y accesorios.</p>
                     
           <a href="Nosotros.html" class="btn-about" data-aos="zoom-in" data-aos-delay="700"><i class="fas fa-book-open"></i> LEER MAS</a>
         </div>
         <div class="about-image" data-aos="fade-left" data-aos-delay="200">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format" alt="Nuestro equipo">
+          <img src="Imagenes/index/Nosotros.jpeg" alt="Valvulas">
         </div>
       </div>
     </div>
@@ -1542,17 +203,13 @@
       <div class="contacto-grid">
         <div class="contacto-info">
           <h3 data-aos="fade-right">¿Necesitas una cotización?</h3>
-          <div class="contacto-detalle" data-aos="fade-right" data-aos-delay="100">
-            <i class="fas fa-map-pin"></i>
-            <p>Av. Industrias 2345, Parque Industrial<br>Monterrey, N.L. 66600</p>
-          </div>
           <div class="contacto-detalle" data-aos="fade-right" data-aos-delay="200">
             <i class="fas fa-clock"></i>
-            <p><strong>Horario:</strong><br>Lun - Vie: 8:00 - 18:00<br>Sábados: 9:00 - 14:00</p>
+            <p><strong>Horario:</strong><br>Lun-Vie: 9:00 AM - 6:00 PM<br>Sábado: 9:00 AM - 1:00 PM</p>
           </div>
           <div class="contacto-detalle" data-aos="fade-right" data-aos-delay="300">
             <i class="fas fa-phone"></i>
-            <p>+52 (81) 8345 6789<br>ventas@jedipipesales.mx</p>
+            <p>771 404 3195<br>uniberito@gmail.com</p>
           </div>
         </div>
         <div class="contacto-formulario" data-aos="fade-left" data-aos-delay="200">
@@ -1576,43 +233,29 @@
         <img src="Imagenes/Logo.png" alt="Jedi Pipe Sales">
         <p>Venta de tuberías, conexiones, válvulas y accesorios para la industria y construcción.</p>
         <div class="footer-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://wa.me/527714043195" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
       <div class="footer-col">
-        <h4>Productos</h4>
+        <h4>Enlaces Rápidos</h4>
         <ul>
-          <li><a href="#">Tubería Galvanizada</a></li>
-          <li><a href="#">Tubería de Acero</a></li>
-          <li><a href="#">Válvulas</a></li>
-          <li><a href="#">Conexiones</a></li>
-          <li><a href="#">Accesorios de Bronce</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Más Productos</h4>
-        <ul>
-          <li><a href="#">Medidores</a></li>
-          <li><a href="#">Soportería</a></li>
-          <li><a href="#">Conexiones Fierro Fundido</a></li>
-          <li><a href="#">Llaves de Nariz</a></li>
-          <li><a href="#">Bridas y Accesorios</a></li>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="Productos.html">Productos</a></li>
+          <li><a href="Nosotros.html">Nosotros</a></li>
+          <li><a href="Contacto.html">Contacto</a></li>
+          <li><a href="https://www.hidrosistemas.com.mx/">Hidrosistemas</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contacto</h4>
         <ul>
-          <li><i class="fas fa-phone"></i> (81) 8345 6789</li>
-          <li><i class="fas fa-envelope"></i> ventas@jedipipesales.mx</li>
-          <li><i class="fas fa-map-marker-alt"></i> Monterrey, N.L.</li>
+          <li><i class="fas fa-phone"></i> 771 404 3195</li>
+          <li><i class="fas fa-envelope"></i> uniberito@gmail.com</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2024 JD Pipe Sales. Todos los derechos reservados. Venta de tuberías y conexiones.</p>
+      <p>&copy; <script>document.write(new Date().getFullYear());</script> JD Pipe Sales. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>

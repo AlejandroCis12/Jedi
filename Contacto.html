@@ -14,837 +14,10 @@
   
   <!-- AOS (Animate On Scroll) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/Contacto.css">
+  <link rel="stylesheet" href="styles/footer.css">
 
-  <style>
-    /* ===== RESET Y PALETA MODERNA ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --fondo-claro: #f8f7f4;
-      --texto-principal: #1a2e3c;
-      --azul-medio: #1e4a5f;
-      --coral: #ff6b4a;
-      --dorado-suave: #e6b450;
-      --blanco-puro: #ffffff;
-      --sombra-flotante: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--fondo-claro);
-      color: var(--texto-principal);
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
-
-    body.menu-abierto {
-      overflow: hidden;
-    }
-
-    /* ===== ANIMACIONES GLOBALES ===== */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes fadeInRight {
-      from {
-        opacity: 0;
-        transform: translateX(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes zoomIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    /* ===== HEADER SIN ANIMACIONES ===== */
-    .header {
-      background: var(--azul-medio);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      border-bottom: 3px solid var(--dorado-suave);
-      transition: all 0.3s ease;
-    }
-
-    .header.scrolled {
-      padding: 0.3rem 0;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    }
-
-    .header-container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0.5rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo img {
-      height: 68px;
-      width: auto;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .logo img:hover {
-      transform: scale(1.05);
-    }
-
-    .nav {
-      display: flex;
-      gap: 2.8rem;
-      align-items: center;
-    }
-
-    .nav-link {
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-      position: relative;
-      transition: color 0.3s ease;
-      background: none;
-      border: none;
-      font-family: inherit;
-      text-transform: uppercase;
-      cursor: pointer;
-      padding: 0.5rem 0;
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--dorado-suave);
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover {
-      color: var(--dorado-suave);
-    }
-
-    .nav-link:hover::after {
-      width: 80%;
-    }
-
-    .nav-link.active {
-      color: var(--dorado-suave);
-    }
-
-    .nav-link.active::after {
-      width: 80%;
-    }
-
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown .nav-link i {
-      font-size: 0.7rem;
-      transition: transform 0.3s ease;
-    }
-
-    .dropdown:hover .nav-link i {
-      transform: rotate(180deg);
-    }
-
-    .submenu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--blanco-puro);
-      min-width: 250px;
-      border-radius: 0 0 16px 16px;
-      box-shadow: var(--sombra-flotante);
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      z-index: 1001;
-      margin-top: 0.5rem;
-      border-top: 3px solid var(--coral);
-    }
-
-    .dropdown:hover .submenu {
-      display: flex;
-      animation: fadeInDown 0.3s ease;
-    }
-
-    .submenu a {
-      padding: 14px 20px;
-      text-decoration: none;
-      color: var(--azul-medio);
-      font-weight: 500;
-      transition: all 0.3s ease;
-      border-left: 3px solid transparent;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .submenu a i {
-      width: 20px;
-      color: var(--coral);
-      transition: transform 0.3s ease;
-    }
-
-    .submenu a:hover {
-      background: #f0ebe4;
-      border-left-color: var(--coral);
-      color: var(--coral);
-      padding-left: 25px;
-    }
-
-    .submenu a:hover i {
-      transform: translateX(3px);
-      color: var(--dorado-suave);
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 2rem;
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      z-index: 1001;
-      width: 44px;
-      height: 44px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .hamburger:hover {
-      background: rgba(255,255,255,0.1);
-      transform: scale(1.05);
-    }
-
-    .hamburger:active {
-      transform: scale(0.95);
-    }
-
-    .overlay {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: rgba(30, 74, 95, 0.9);
-      backdrop-filter: blur(5px);
-      top: 0;
-      left: 0;
-      display: none;
-      z-index: 999;
-    }
-    
-    .overlay.active {
-      display: block;
-    }
-
-    /* ===== HERO CONTACTO SIN ANIMACIONES EXTRA ===== */
-    .hero-contacto {
-      margin-top: 86px;
-      background: linear-gradient(135deg, var(--azul-medio) 0%, #143e50 100%);
-      padding: 4rem 2rem;
-      text-align: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-contacto::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(255,107,74,0.2) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-
-    .hero-contacto .container {
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-contacto h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      opacity: 0;
-      animation: fadeInDown 0.8s ease forwards;
-    }
-
-    .hero-contacto p {
-      font-size: 1.2rem;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease 0.2s forwards;
-    }
-
-    /* ===== SECCIÓN CONTACTO PRINCIPAL ===== */
-    .contacto-principal {
-      padding: 5rem 2rem;
-      background: var(--blanco-puro);
-    }
-
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-
-    .contacto-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .contacto-info-box {
-      background: var(--fondo-claro);
-      padding: 3rem 2rem;
-      border-radius: 30px;
-      box-shadow: var(--sombra-flotante);
-      opacity: 0;
-      animation: fadeInLeft 0.8s ease forwards;
-    }
-
-    .contacto-info-box h2 {
-      font-size: 2rem;
-      color: var(--azul-medio);
-      margin-bottom: 2rem;
-    }
-
-    .info-item {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      padding: 1rem;
-      border-radius: 15px;
-      transition: all 0.3s ease;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
-    .info-item:nth-child(1) { animation-delay: 0.1s; }
-    .info-item:nth-child(2) { animation-delay: 0.2s; }
-    .info-item:nth-child(3) { animation-delay: 0.3s; }
-    .info-item:nth-child(4) { animation-delay: 0.4s; }
-
-    .info-item:hover {
-      background: white;
-      transform: translateX(5px);
-      box-shadow: var(--sombra-flotante);
-    }
-
-    .info-icon {
-      width: 50px;
-      height: 50px;
-      background: var(--coral);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.3rem;
-      transition: all 0.3s ease;
-    }
-
-    .info-item:hover .info-icon {
-      background: var(--dorado-suave);
-      transform: rotate(5deg) scale(1.1);
-    }
-
-    .info-text h3 {
-      font-size: 1.2rem;
-      color: var(--azul-medio);
-      margin-bottom: 0.3rem;
-    }
-
-    .info-text p {
-      color: #4a5c63;
-      line-height: 1.6;
-    }
-
-    .redes-sociales {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease 0.5s forwards;
-    }
-
-    .red-social {
-      width: 44px;
-      height: 44px;
-      background: var(--azul-medio);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .red-social:hover {
-      background: var(--coral);
-      transform: translateY(-3px);
-    }
-
-    /* Formulario */
-    .contacto-form-box {
-      background: white;
-      padding: 3rem;
-      border-radius: 30px;
-      box-shadow: var(--sombra-flotante);
-      opacity: 0;
-      animation: fadeInRight 0.8s ease forwards;
-    }
-
-    .contacto-form-box h2 {
-      font-size: 2rem;
-      color: var(--azul-medio);
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeInDown 0.6s ease 0.1s forwards;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .campo-full {
-      grid-column: span 2;
-    }
-
-    .campo {
-      width: 100%;
-      padding: 1rem;
-      border: 2px solid #e0e7e9;
-      border-radius: 12px;
-      font-family: inherit;
-      transition: all 0.3s ease;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
-    .form-grid .campo:nth-child(1) { animation-delay: 0.2s; }
-    .form-grid .campo:nth-child(2) { animation-delay: 0.3s; }
-    .form-grid + .form-grid .campo:nth-child(1) { animation-delay: 0.4s; }
-    .form-grid + .form-grid .campo:nth-child(2) { animation-delay: 0.5s; }
-    textarea.campo { animation-delay: 0.6s; }
-
-    .campo:focus {
-      outline: none;
-      border-color: var(--coral);
-      box-shadow: 0 0 0 3px rgba(255,107,74,0.1);
-      transform: scale(1.02);
-    }
-
-    .btn-enviar {
-      width: 100%;
-      padding: 1.2rem;
-      background: var(--azul-medio);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      opacity: 0;
-      animation: zoomIn 0.6s ease 0.7s forwards;
-    }
-
-    .btn-enviar:hover {
-      background: var(--coral);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    .btn-enviar i {
-      transition: transform 0.3s ease;
-    }
-
-    .btn-enviar:hover i {
-      transform: translateX(5px);
-    }
-
-    /* ===== SECCIÓN MAPA ===== */
-    .mapa-section {
-      padding: 4rem 2rem;
-      background: var(--fondo-claro);
-    }
-
-    .mapa-container {
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: var(--sombra-flotante);
-      opacity: 0;
-      animation: zoomIn 0.8s ease forwards;
-    }
-
-    .mapa-container iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-    }
-
-    /* ===== SECCIÓN PREGUNTAS ===== */
-    .faq-section {
-      padding: 5rem 2rem;
-      background: var(--blanco-puro);
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-header h2 {
-      font-size: 2.5rem;
-      color: var(--azul-medio);
-      opacity: 0;
-      animation: fadeInDown 0.6s ease forwards;
-    }
-
-    .section-header h2 span {
-      color: var(--coral);
-    }
-
-    .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      background: var(--fondo-claro);
-      padding: 2rem;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
-    .faq-item:nth-child(1) { animation-delay: 0.1s; }
-    .faq-item:nth-child(2) { animation-delay: 0.2s; }
-    .faq-item:nth-child(3) { animation-delay: 0.3s; }
-    .faq-item:nth-child(4) { animation-delay: 0.4s; }
-
-    .faq-item:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--sombra-flotante);
-    }
-
-    .faq-item h3 {
-      color: var(--azul-medio);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .faq-item h3 i {
-      color: var(--coral);
-      transition: transform 0.3s ease;
-    }
-
-    .faq-item:hover h3 i {
-      transform: rotate(5deg) scale(1.1);
-    }
-
-    .faq-item p {
-      color: #4a5c63;
-    }
-
-    /* ===== FOOTER SIN ANIMACIONES ===== */
-    .footer {
-      background: #0e2b36;
-      color: white;
-      padding: 3rem 2rem 1.5rem;
-    }
-
-    .footer-grid {
-      max-width: 1300px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 3rem;
-      margin-bottom: 2rem;
-    }
-
-    .footer-logo img {
-      height: 50px;
-      margin-bottom: 1rem;
-      transition: transform 0.3s ease;
-    }
-
-    .footer-logo img:hover {
-      transform: scale(1.05);
-    }
-
-    .footer-logo p {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .footer-col h4 {
-      color: var(--dorado-suave);
-      font-size: 1.1rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-col ul li a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-
-    .footer-col ul li a:hover {
-      color: var(--dorado-suave);
-      transform: translateX(5px);
-      display: inline-block;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .footer-social a {
-      width: 36px;
-      height: 36px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      transition: all 0.3s ease;
-    }
-
-    .footer-social a:hover {
-      background: var(--dorado-suave);
-      color: var(--azul-medio);
-      transform: translateY(-3px);
-    }
-
-    .footer-bottom {
-      max-width: 1300px;
-      margin: 0 auto;
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.6);
-      font-size: 0.9rem;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1000px) {
-      .contacto-wrapper { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; }
-      .campo-full { grid-column: span 1; }
-      .faq-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 900px) {
-      .hamburger { 
-        display: flex; 
-      }
-      
-      .nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 320px;
-        height: 100vh;
-        background: var(--azul-medio);
-        flex-direction: column;
-        padding: 6rem 2rem 2rem;
-        gap: 1rem;
-        transition: right 0.4s ease;
-        align-items: flex-start;
-        overflow-y: auto;
-        z-index: 1000;
-      }
-
-      .nav.active { right: 0; }
-
-      .nav-link { font-size: 1.2rem; width: 100%; text-align: left; }
-
-      .dropdown { width: 100%; }
-      
-      .dropdown .nav-link { 
-        justify-content: space-between; 
-        display: flex;
-        align-items: center;
-        width: 100%;
-      }
-      
-      .dropdown:hover .submenu { display: none; }
-      
-      .dropdown.active .submenu {
-        display: flex !important;
-        position: static;
-        background: rgba(255,255,255,0.1);
-        border: none;
-        animation: fadeInDown 0.3s ease;
-      }
-      
-      .dropdown.active .nav-link i { transform: rotate(180deg); }
-      
-      .submenu {
-        position: static;
-        background: transparent;
-      }
-      
-      .submenu a { 
-        color: white; 
-        padding: 12px 20px;
-      }
-
-      .submenu a i {
-        color: var(--dorado-suave);
-      }
-
-      .submenu a:hover {
-        background: rgba(255,255,255,0.15);
-        color: white;
-      }
-      
-      .hero-contacto { margin-top: 82px; }
-      .hero-contacto h1 { font-size: 2.5rem; }
-    }
-
-    @media (max-width: 600px) {
-      .footer-grid { grid-template-columns: 1fr; }
-      .hero-contacto h1 { font-size: 2rem; }
-      .contacto-info-box { padding: 2rem; }
-      .contacto-form-box { padding: 2rem; }
-      .hero-contacto p { font-size: 1rem; }
-    }
-
-    /* ===== AOS ANIMATIONS ===== */
-    [data-aos="fade-up"] {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    [data-aos="fade-up"].aos-animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    [data-aos="fade-right"] {
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    [data-aos="fade-right"].aos-animate {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    [data-aos="fade-left"] {
-      opacity: 0;
-      transform: translateX(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    [data-aos="fade-left"].aos-animate {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    [data-aos="zoom-in"] {
-      opacity: 0;
-      transform: scale(0.9);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    [data-aos="zoom-in"].aos-animate {
-      opacity: 1;
-      transform: scale(1);
-    }
-  </style>
 </head>
 <body>
 
@@ -856,21 +29,13 @@
     <nav class="nav" id="nav">
       <a href="index.html" class="nav-link">INICIO</a>
       <div class="dropdown" id="productosDropdown">
+        <a href="Productos.html">
         <button class="nav-link" id="dropdownBtn">
-          PRODUCTOS <i class="fas fa-chevron-down"></i>
-        </button>
-              <div class="submenu">
-                <a href="productos.html?categoria=tuberia-galvanizada"><i class="fas fa-pipe"></i> Tubería Galvanizada</a>
-                <a href="productos.html?categoria=valvulas"><i class="fas fa-valve"></i> Válvulas y Llaves</a>
-                <a href="productos.html?categoria=bronce"><i class="fas fa-tools"></i> Accesorios de Bronce</a>
-                <a href="productos.html?categoria=medidores"><i class="fas fa-tachometer-alt"></i> Medidores y Válvulas</a>
-                <a href="productos.html?categoria=tuberia-acero"><i class="fas fa-pipe"></i> Tubería de Acero</a>
-                <a href="productos.html?categoria=fierro-fundido"><i class="fas fa-bolt"></i> Conexiones Fierro Fundido</a>
-                <a href="productos.html?categoria=soporteria"><i class="fas fa-clipboard"></i> Soportería</a>
-              </div>
+          PRODUCTOS 
+        </button></a>
       </div>
-      <a href="nosotros.html" class="nav-link">SOBRE MÍ</a>
-      <a href="contacto.html" class="nav-link active">CONTACTO</a>
+      <a href="Nosotros.html" class="nav-link">SOBRE MI</a>
+      <a href="Contacto.html" class="nav-link">CONTACTO</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="Menú">
       <i class="fas fa-bars"></i>
@@ -895,20 +60,12 @@
         <!-- Información de contacto -->
         <div class="contacto-info-box" data-aos="fade-right">
           <h2 data-aos="fade-down">Información de contacto</h2>
-          
-          <div class="info-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="info-icon"><i class="fas fa-map-pin"></i></div>
-            <div class="info-text">
-              <h3>Ubicación</h3>
-              <p>Av. Industrias 2345, Parque Industrial<br>Monterrey, N.L. 66600</p>
-            </div>
-          </div>
 
           <div class="info-item" data-aos="fade-up" data-aos-delay="200">
             <div class="info-icon"><i class="fas fa-clock"></i></div>
             <div class="info-text">
               <h3>Horario de atención</h3>
-              <p>Lunes a Viernes: 8:00 - 18:00<br>Sábados: 9:00 - 14:00</p>
+              <p>Lunes a Viernes: 9:00 - 18:00<br>Sábados: 9:00 - 14:00</p>
             </div>
           </div>
 
@@ -916,7 +73,7 @@
             <div class="info-icon"><i class="fas fa-phone"></i></div>
             <div class="info-text">
               <h3>Teléfono</h3>
-              <p>+52 (81) 8345 6789</p>
+              <p>771 404 3195</p>
             </div>
           </div>
 
@@ -924,16 +81,10 @@
             <div class="info-icon"><i class="fas fa-envelope"></i></div>
             <div class="info-text">
               <h3>Email</h3>
-              <p>ventas@jedipipesales.mx<br>juan@jedipipesales.mx</p>
+              <p>uniberito@gmail.com</p>
             </div>
           </div>
 
-          <div class="redes-sociales" data-aos="fade-up" data-aos-delay="500">
-            <a href="#" class="red-social"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="red-social"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="red-social"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="red-social"><i class="fab fa-whatsapp"></i></a>
-          </div>
         </div>
 
         <!-- Formulario de contacto -->
@@ -955,15 +106,6 @@
             </button>
           </form>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Mapa -->
-  <section class="mapa-section">
-    <div class="container">
-      <div class="mapa-container" data-aos="zoom-in">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115303.10935198392!2d-100.381786!3d25.686614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86629531b437f8f5%3A0xa3d3d3ca0ac8ea9a!2sMonterrey%2C%20Nuevo%20Le%C3%B3n!5e0!3m2!1ses!2smx!4v1620000000000!5m2!1ses!2smx" allowfullscreen="" loading="lazy"></iframe>
       </div>
     </div>
   </section>
@@ -998,47 +140,36 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-grid">
-    <div class="footer-logo">
-      <img src="Imagenes/Logo.png" alt="Jedi Pipe Sales">
-      <p>Venta de tuberías, conexiones y válvulas. Atención personalizada de Juan Domínguez.</p>
-      <div class="footer-social">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <img src="Imagenes/Logo.png" alt="Jedi Pipe Sales">
+        <p>Venta de tuberías, conexiones, válvulas y accesorios para la industria y construcción.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/527714043195" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces Rápidos</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="Productos.html">Productos</a></li>
+          <li><a href="Nosotros.html">Nosotros</a></li>
+          <li><a href="Contacto.html">Contacto</a></li>
+          <li><a href="https://www.hidrosistemas.com.mx/">Hidrosistemas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><i class="fas fa-phone"></i> 771 404 3195</li>
+          <li><i class="fas fa-envelope"></i> uniberito@gmail.com</li>
+        </ul>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>Productos</h4>
-      <ul>
-        <li><a href="#">Tuberías</a></li>
-        <li><a href="#">Conexiones</a></li>
-        <li><a href="#">Válvulas</a></li>
-        <li><a href="#">Accesorios Bronce</a></li>
-        <li><a href="#">Medidores</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <p>&copy; <script>document.write(new Date().getFullYear());</script> JD Pipe Sales. Todos los derechos reservados.</p>
     </div>
-    <div class="footer-col">
-      <h4>Enlaces</h4>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html">Sobre mí</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-        <li><a href="#">Aviso de privacidad</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contacto</h4>
-      <ul>
-        <li><i class="fas fa-phone"></i> (81) 8345 6789</li>
-        <li><i class="fas fa-envelope"></i> juan@jedipipesales.mx</li>
-        <li><i class="fas fa-map-marker-alt"></i> Monterrey, N.L.</li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2024 JD Pipe Sales · Juan Domínguez · Persona Física con Actividad Empresarial</p>
   </div>
 </footer>
 

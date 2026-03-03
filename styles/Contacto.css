@@ -1,0 +1,369 @@
+/* ===== CONTACTO CSS - SIN ANIMACIONES ===== */
+:root {
+  --fondo-claro: #f8f7f4;
+  --texto-principal: #1a2e3c;
+  --azul-medio: #1e4a5f;
+  --coral: #ff6b4a;
+  --dorado-suave: #e6b450;
+  --blanco-puro: #ffffff;
+  --sombra-flotante: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== HERO CONTACTO ===== */
+.hero-contacto {
+  margin-top: 86px;
+  background: linear-gradient(135deg, var(--azul-medio) 0%, #143e50 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-contacto .container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-contacto h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-contacto p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ===== SECCIÓN CONTACTO PRINCIPAL ===== */
+.contacto-principal {
+  padding: 5rem 2rem;
+  background: var(--blanco-puro);
+}
+
+.contacto-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* ===== CAJA DE INFORMACIÓN ===== */
+.contacto-info-box {
+  background: var(--fondo-claro);
+  padding: 3rem 2rem;
+  border-radius: 30px;
+  box-shadow: var(--sombra-flotante);
+}
+
+.contacto-info-box h2 {
+  font-size: 2rem;
+  color: var(--azul-medio);
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.info-item:hover {
+  background: white;
+  transform: translateX(5px);
+  box-shadow: var(--sombra-flotante);
+}
+
+.info-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--coral);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+
+.info-item:hover .info-icon {
+  background: var(--dorado-suave);
+  transform: rotate(5deg) scale(1.1);
+}
+
+.info-text h3 {
+  font-size: 1.2rem;
+  color: var(--azul-medio);
+  margin-bottom: 0.3rem;
+}
+
+.info-text p {
+  color: #4a5c63;
+  line-height: 1.6;
+}
+
+/* ===== FORMULARIO ===== */
+.contacto-form-box {
+  background: var(--azul-medio);
+  padding: 3rem;
+  border-radius: 30px;
+  box-shadow: var(--sombra-flotante);
+  width: 100%;
+}
+
+.contacto-form-box h2 {
+  font-size: 2rem;
+  color: var(--dorado-suave);
+  margin-bottom: 2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.campo {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 2px solid #e0e7e9;
+  border-radius: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  color: var(--texto-principal);
+}
+
+.campo:focus {
+  outline: none;
+  border-color: var(--coral);
+  box-shadow: 0 0 0 3px rgba(255,107,74,0.1);
+  transform: scale(1.02);
+}
+
+.campo::placeholder {
+  color: #9aa9b2;
+}
+
+.campo-full {
+  grid-column: span 2;
+  margin-bottom: 1.5rem;
+}
+
+textarea.campo {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.btn-enviar {
+  width: 100%;
+  padding: 1.2rem;
+  background: var(--azul-medio);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-enviar:hover {
+  background: var(--coral);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.btn-enviar i {
+  transition: transform 0.3s ease;
+}
+
+.btn-enviar:hover i {
+  transform: translateX(5px);
+}
+
+/* ===== SECCIÓN PREGUNTAS ===== */
+.faq-section {
+  padding: 5rem 2rem;
+  background: var(--blanco-puro);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--azul-medio);
+}
+
+.section-header h2 span {
+  color: var(--coral);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--fondo-claro);
+  padding: 2rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-flotante);
+}
+
+.faq-item h3 {
+  color: var(--azul-medio);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.faq-item h3 i {
+  color: var(--coral);
+  transition: transform 0.3s ease;
+}
+
+.faq-item:hover h3 i {
+  transform: rotate(5deg) scale(1.1);
+}
+
+.faq-item p {
+  color: #4a5c63;
+  line-height: 1.6;
+}
+
+/* ===== MEDIA QUERIES ===== */
+@media (max-width: 1000px) {
+  .contacto-wrapper { 
+    grid-template-columns: 1fr; 
+    gap: 2rem;
+  }
+  
+  .form-grid { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .campo-full { 
+    grid-column: span 1; 
+  }
+  
+  .faq-grid { 
+    grid-template-columns: 1fr; 
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-contacto { 
+    margin-top: 82px; 
+  }
+  
+  .hero-contacto h1 { 
+    font-size: 2.5rem; 
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-contacto h1 { 
+    font-size: 2rem; 
+  }
+  
+  .contacto-info-box, 
+  .contacto-form-box { 
+    padding: 2rem; 
+  }
+  
+  .hero-contacto p { 
+    font-size: 1rem; 
+  }
+}
+
+/* ===== MEJORAS VISUALES ADICIONALES ===== */
+
+/* Efecto de profundidad para la caja del formulario */
+.contacto-form-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.contacto-form-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--coral), var(--dorado-suave));
+  border-radius: 30px 30px 0 0;
+}
+
+/* Mejora para los íconos de la info */
+.info-icon {
+  box-shadow: 0 5px 10px rgba(255,107,74,0.2);
+}
+
+/* Sombra más notoria en hover */
+.info-item:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Estilo para el focus visible (accesibilidad) */
+.campo:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+
+/* Animación suave para el botón */
+.btn-enviar {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-enviar::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-enviar:active::after {
+  width: 300px;
+  height: 300px;
+}

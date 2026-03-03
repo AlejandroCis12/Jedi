@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="JD Pipe Sales - Catálogo completo de tuberías, conexiones, válvulas y accesorios">
+  <title>Jedi · Pipe Sales | Productos</title>
+
+  <!-- Fuentes modernas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    /* ===== MISMOS ESTILOS ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --fondo-claro: #f8f7f4;
+      --texto-principal: #1a2e3c;
+      --azul-medio: #1e4a5f;
+      --coral: #ff6b4a;
+      --dorado-suave: #e6b450;
+      --blanco-puro: #ffffff;
+      --gris-claro: #eef2f3;
+      --sombra-flotante: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      --sombra-hover: 0 30px 60px -12px rgba(0, 0, 0, 0.2);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--fondo-claro);
+      color: var(--texto-principal);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    body.modal-abierto {
+      overflow: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      background: var(--azul-medio);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 3px solid var(--dorado-suave);
+      transition: all 0.3s ease;
+    }
+
+    .header.scrolled {
+      padding: 0.3rem 0;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .header-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      height: 68px;
+      width: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .nav {
+      display: flex;
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      position: relative;
+      transition: color 0.3s ease;
+      background: none;
+      border: none;
+      font-family: inherit;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 0.5rem 0;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--dorado-suave);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--dorado-suave);
+    }
+
+    .nav-link:hover::after {
+      width: 80%;
+    }
+
+    .nav-link.active {
+      color: var(--dorado-suave);
+    }
+
+    .nav-link.active::after {
+      width: 80%;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown .nav-link i {
+      font-size: 0.7rem;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown:hover .nav-link i {
+      transform: rotate(180deg);
+    }
+
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--blanco-puro);
+      min-width: 250px;
+      border-radius: 0 0 16px 16px;
+      box-shadow: var(--sombra-flotante);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1001;
+      margin-top: 0.5rem;
+      border-top: 3px solid var(--coral);
+    }
+
+    .submenu a {
+      padding: 14px 20px;
+      text-decoration: none;
+      color: var(--azul-medio);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .submenu a i {
+      width: 20px;
+      color: var(--coral);
+      transition: transform 0.3s ease;
+    }
+
+    .submenu a:hover {
+      background: #f0ebe4;
+      border-left-color: var(--coral);
+      color: var(--coral);
+      padding-left: 25px;
+    }
+
+    .submenu a:hover i {
+      transform: translateX(3px);
+      color: var(--dorado-suave);
+    }
+
+    .dropdown:hover .submenu {
+      display: flex;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      z-index: 1001;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger:hover {
+      background: rgba(255,255,255,0.1);
+      transform: scale(1.05);
+    }
+
+    .hamburger i {
+      transition: transform 0.3s ease;
+    }
+
+    .hamburger:hover i {
+      transform: rotate(90deg);
+    }
+
+    .overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(30, 74, 95, 0.9);
+      backdrop-filter: blur(5px);
+      top: 0;
+      left: 0;
+      display: none;
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .overlay.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* ===== HERO PRODUCTOS ===== */
+    .hero-productos {
+      margin-top: 86px;
+      background: linear-gradient(135deg, var(--azul-medio) 0%, #143e50 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-productos::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,107,74,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-productos .container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-productos h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .hero-productos p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* ===== FILTROS ===== */
+    .filtros-section {
+      padding: 2rem 2rem 0;
+      background: var(--blanco-puro);
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .filtros-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      padding: 2rem;
+      background: var(--fondo-claro);
+      border-radius: 50px;
+    }
+
+    .filtro-btn {
+      padding: 0.8rem 2rem;
+      border: none;
+      background: white;
+      color: var(--texto-principal);
+      font-weight: 600;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .filtro-btn:hover {
+      background: var(--dorado-suave);
+      color: var(--azul-medio);
+      transform: translateY(-2px);
+    }
+
+    .filtro-btn.active {
+      background: var(--azul-medio);
+      color: white;
+    }
+
+    /* ===== GRID DE PRODUCTOS ===== */
+    .productos-section {
+      padding: 4rem 2rem;
+      background: var(--blanco-puro);
+    }
+
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .producto-card {
+      background: var(--fondo-claro);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--sombra-flotante);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .producto-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--dorado-suave);
+      box-shadow: var(--sombra-hover);
+    }
+
+    .producto-card.oculto {
+      display: none;
+    }
+
+    .producto-imagen {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      background: var(--gris-claro);
+    }
+
+    .producto-imagen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .producto-card:hover .producto-imagen img {
+      transform: scale(1.1);
+    }
+
+    .producto-tag {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--coral);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .producto-info {
+      padding: 1.5rem;
+    }
+
+    .producto-categoria {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--coral);
+      background: rgba(255,107,74,0.1);
+      padding: 0.2rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 0.8rem;
+    }
+
+    .producto-info h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--azul-medio);
+      margin-bottom: 0.5rem;
+    }
+
+    .producto-descripcion {
+      color: #4a5c63;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .btn-ver-detalle {
+      width: 100%;
+      padding: 0.8rem;
+      background: transparent;
+      color: var(--azul-medio);
+      border: 2px solid var(--azul-medio);
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-ver-detalle:hover {
+      background: var(--azul-medio);
+      color: white;
+    }
+
+    .btn-ver-detalle i {
+      transition: transform 0.3s ease;
+    }
+
+    .btn-ver-detalle:hover i {
+      transform: translateX(3px);
+    }
+
+    /* ===== MODAL DE DETALLE ===== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-contenedor {
+      background: var(--blanco-puro);
+      width: 90%;
+      max-width: 1000px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 30px;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-contenedor {
+      transform: scale(1);
+    }
+
+    .modal-cerrar {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      background: var(--coral);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .modal-cerrar:hover {
+      background: var(--azul-medio);
+      transform: rotate(90deg);
+    }
+
+    .modal-contenido {
+      padding: 2rem;
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .modal-imagen img {
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    .modal-info h2 {
+      font-size: 2.5rem;
+      color: var(--azul-medio);
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-categoria-badge {
+      display: inline-block;
+      background: var(--coral);
+      color: white;
+      padding: 0.3rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-descripcion {
+      color: #4a5c63;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .modal-caracteristicas {
+      background: var(--fondo-claro);
+      padding: 1.5rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+    }
+
+    .modal-caracteristicas h3 {
+      color: var(--azul-medio);
+      margin-bottom: 1rem;
+    }
+
+    .modal-caracteristicas ul {
+      list-style: none;
+    }
+
+    .modal-caracteristicas li {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .modal-caracteristicas li i {
+      color: var(--coral);
+    }
+
+    .modal-precio {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--azul-medio);
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-precio span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #4a5c63;
+    }
+
+    .modal-botones {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn-cotizar {
+      flex: 1;
+      padding: 1rem;
+      background: var(--azul-medio);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-cotizar:hover {
+      background: var(--coral);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      flex: 1;
+      padding: 1rem;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-whatsapp:hover {
+      background: #128C7E;
+      transform: translateY(-2px);
+    }
+
+    /* ===== SECCIÓN DE CONTACTO ===== */
+    .contacto-seccion {
+      background: var(--azul-medio);
+      padding: 4rem 2rem;
+      color: white;
+    }
+
+    .contacto-grid {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contacto-info h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--dorado-suave);
+    }
+
+    .contacto-detalle {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      align-items: center;
+      transition: all 0.3s ease;
+      padding: 1rem;
+      border-radius: 12px;
+    }
+
+    .contacto-detalle:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateX(10px);
+    }
+
+    .contacto-detalle i {
+      font-size: 1.8rem;
+      color: var(--dorado-suave);
+      width: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .contacto-detalle:hover i {
+      transform: scale(1.2);
+    }
+
+    .contacto-detalle p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .contacto-formulario {
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 30px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(230,180,80,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .contacto-formulario:hover {
+      border-color: var(--dorado-suave);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .contacto-formulario h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--dorado-suave);
+    }
+
+    .campo {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      color: white;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .campo:focus {
+      outline: none;
+      border-color: var(--dorado-suave);
+      background: rgba(255,255,255,0.15);
+      transform: scale(1.02);
+    }
+
+    .campo::placeholder {
+      color: rgba(255,255,255,0.6);
+      transition: all 0.3s ease;
+    }
+
+    .campo:focus::placeholder {
+      opacity: 0.5;
+      transform: translateX(10px);
+    }
+
+    .btn-enviar {
+      background: var(--dorado-suave);
+      color: var(--azul-medio);
+      border: none;
+      padding: 1rem 2rem;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .btn-enviar:hover {
+      background: var(--coral);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #0e2b36;
+      color: white;
+      padding: 3rem 2rem 1.5rem;
+    }
+
+    .footer-grid {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo img {
+      height: 50px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .footer-logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .footer-logo p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .footer-col h4 {
+      color: var(--dorado-suave);
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--dorado-suave);
+      transform: translateX(5px);
+      display: inline-block;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      background: var(--dorado-suave);
+      color: var(--azul-medio);
+      transform: translateY(-3px) rotate(360deg);
+    }
+
+    .footer-bottom {
+      max-width: 1300px;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
+      .productos-grid { grid-template-columns: repeat(2, 1fr); }
+      .contacto-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .modal-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+      
+      .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 320px;
+        height: 100vh;
+        background: var(--azul-medio);
+        flex-direction: column;
+        padding: 6rem 2rem 2rem;
+        gap: 1rem;
+        transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        align-items: flex-start;
+        overflow-y: auto;
+        z-index: 1000;
+      }
+
+      .nav.active { right: 0; }
+
+      .nav-link { font-size: 1.2rem; width: 100%; text-align: left; }
+
+      .dropdown { width: 100%; }
+      
+      .dropdown .nav-link { justify-content: space-between; }
+      
+      .dropdown:hover .submenu { display: none; }
+      
+      .dropdown.active .submenu {
+        display: flex !important;
+        position: static;
+        background: rgba(255,255,255,0.1);
+        border: none;
+      }
+      
+      .dropdown.active .nav-link i { transform: rotate(180deg); }
+      
+      .submenu {
+        position: static;
+        background: transparent;
+      }
+      
+      .submenu a { color: white; }
+      
+      .hero-productos { margin-top: 82px; }
+      .hero-productos h1 { font-size: 2.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .productos-grid { grid-template-columns: 1fr; }
+      .filtros-wrapper { flex-direction: column; border-radius: 20px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-productos h1 { font-size: 2rem; }
+      .modal-botones { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-container">
+    <div class="logo">
+      <img src="Imagenes/Logo.png" alt="Jedi Pipe Sales">
+    </div>
+    <nav class="nav" id="nav">
+      <a href="index.html" class="nav-link">INICIO</a>
+      <div class="dropdown" id="productosDropdown">
+        <button class="nav-link active" id="dropdownBtn">
+          PRODUCTOS <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="submenu">
+          <a href="#" onclick="filtrarProductos('tuberia-galvanizada'); return false;"><i class="fas fa-pipe"></i> Tubería Galvanizada</a>
+          <a href="#" onclick="filtrarProductos('valvulas'); return false;"><i class="fas fa-valve"></i> Válvulas y Llaves</a>
+          <a href="#" onclick="filtrarProductos('bronce'); return false;"><i class="fas fa-tools"></i> Accesorios de Bronce</a>
+          <a href="#" onclick="filtrarProductos('medidores'); return false;"><i class="fas fa-tachometer-alt"></i> Medidores y Válvulas</a>
+          <a href="#" onclick="filtrarProductos('tuberia-acero'); return false;"><i class="fas fa-pipe"></i> Tubería de Acero</a>
+          <a href="#" onclick="filtrarProductos('fierro-fundido'); return false;"><i class="fas fa-bolt"></i> Conexiones Fierro Fundido</a>
+          <a href="#" onclick="filtrarProductos('soporteria'); return false;"><i class="fas fa-clipboard"></i> Soportería</a>
+        </div>
+      </div>
+      <a href="nosotros.html" class="nav-link">SOBRE MÍ</a>
+      <a href="contacto.html" class="nav-link">CONTACTO</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+<div class="overlay" id="overlay"></div>
+
+<main>
+  <!-- Hero -->
+  <section class="hero-productos">
+    <div class="container">
+      <h1>Nuestros Productos</h1>
+      <p>Todo lo que necesitas en tuberías, conexiones, válvulas y accesorios</p>
+    </div>
+  </section>
+
+  <!-- Filtros (con TU lista) -->
+  <section class="filtros-section">
+    <div class="container">
+      <div class="filtros-wrapper">
+        <button class="filtro-btn active" onclick="filtrarProductos('todos')">TODOS</button>
+        <button class="filtro-btn" onclick="filtrarProductos('tuberia-galvanizada')">TUBERÍA GALVANIZADA</button>
+        <button class="filtro-btn" onclick="filtrarProductos('valvulas')">VÁLVULAS Y LLAVES</button>
+        <button class="filtro-btn" onclick="filtrarProductos('bronce')">ACCESORIOS BRONCE</button>
+        <button class="filtro-btn" onclick="filtrarProductos('medidores')">MEDIDORES Y VÁLVULAS</button>
+        <button class="filtro-btn" onclick="filtrarProductos('tuberia-acero')">TUBERÍA DE ACERO</button>
+        <button class="filtro-btn" onclick="filtrarProductos('fierro-fundido')">CONEXIONES FIERRO FUNDIDO</button>
+        <button class="filtro-btn" onclick="filtrarProductos('soporteria')">SOPORTERÍA</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid de productos -->
+  <section class="productos-section">
+    <div class="container">
+      <div class="productos-grid" id="productosGrid">
+        <!-- Los productos se generan con JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE CONTACTO -->
+  <section id="contacto" class="contacto-seccion">
+    <div class="container">
+      <div class="contacto-grid">
+        <div class="contacto-info">
+          <h3>¿Necesitas una cotización?</h3>
+          <div class="contacto-detalle">
+            <i class="fas fa-map-pin"></i>
+            <p>Av. Industrias 2345, Parque Industrial<br>Monterrey, N.L. 66600</p>
+          </div>
+          <div class="contacto-detalle">
+            <i class="fas fa-clock"></i>
+            <p><strong>Horario:</strong><br>Lun - Vie: 8:00 - 18:00<br>Sábados: 9:00 - 14:00</p>
+          </div>
+          <div class="contacto-detalle">
+            <i class="fas fa-phone"></i>
+            <p>+52 (81) 8345 6789<br>ventas@jedipipesales.mx</p>
+          </div>
+        </div>
+        <div class="contacto-formulario">
+          <h4>Envíanos tu lista</h4>
+          <input type="text" placeholder="Nombre completo" class="campo">
+          <input type="email" placeholder="Correo electrónico" class="campo">
+          <input type="tel" placeholder="Teléfono" class="campo">
+          <textarea placeholder="Productos que necesitas (incluye cantidades)" rows="4" class="campo"></textarea>
+          <button class="btn-enviar">ENVIAR COTIZACIÓN</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- MODAL DE DETALLE -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-contenedor">
+    <button class="modal-cerrar" onclick="cerrarModal()"><i class="fas fa-times"></i></button>
+    <div class="modal-contenido" id="modalContenido">
+      <!-- El contenido se llena con JavaScript -->
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-logo">
+      <img src="Imagenes/Logo.png" alt="Jedi Pipe Sales">
+      <p>Venta de tuberías, conexiones y válvulas. Atención personalizada de Juan Domínguez.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Productos</h4>
+      <ul>
+        <li><a href="#" onclick="filtrarProductos('tuberia-galvanizada'); return false;">Tubería Galvanizada</a></li>
+        <li><a href="#" onclick="filtrarProductos('tuberia-acero'); return false;">Tubería de Acero</a></li>
+        <li><a href="#" onclick="filtrarProductos('valvulas'); return false;">Válvulas y Llaves</a></li>
+        <li><a href="#" onclick="filtrarProductos('bronce'); return false;">Accesorios de Bronce</a></li>
+        <li><a href="#" onclick="filtrarProductos('fierro-fundido'); return false;">Conexiones Fierro Fundido</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Más Productos</h4>
+      <ul>
+        <li><a href="#" onclick="filtrarProductos('medidores'); return false;">Medidores</a></li>
+        <li><a href="#" onclick="filtrarProductos('soporteria'); return false;">Soportería</a></li>
+        <li><a href="nosotros.html">Sobre mí</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><i class="fas fa-phone"></i> (81) 8345 6789</li>
+        <li><i class="fas fa-envelope"></i> juan@jedipipesales.mx</li>
+        <li><i class="fas fa-map-marker-alt"></i> Monterrey, N.L.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 JD Pipe Sales · Juan Domínguez · Persona Física con Actividad Empresarial</p>
+  </div>
+</footer>
+
+<script>
+  // ===== BASE DE DATOS DE PRODUCTOS (CON TU LISTA EXACTA) =====
+  const productos = [
+    // 1. TUBERÍA GALVANIZADA
+    {
+      id: 1,
+      nombre: "Tubería Galvanizada Cédula 40",
+      categoria: "tuberia-galvanizada",
+      categoriaTexto: "TUBERÍA GALVANIZADA",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Tubería de acero galvanizado por inmersión en caliente.",
+      descripcionLarga: "Tubería de acero al carbón con recubrimiento de zinc que la protege contra la corrosión. Ideal para líneas de agua, gas, aire comprimido y aplicaciones estructurales. Resistente a la intemperie.",
+      caracteristicas: [
+        "Diámetros: 1/2\" a 12\"",
+        "Cédula 40 y 80",
+        "Longitud: 6.4 metros",
+        "Roscada en ambos extremos",
+        "Norma ASTM A53"
+      ],
+      precio: "$280 - $2,500",
+      tags: ["Galvanizada", "Cédula 40", "Agua", "Gas", "Estructural"]
+    },
+    {
+      id: 2,
+      nombre: "Tubería Galvanizada Cédula 80",
+      categoria: "tuberia-galvanizada",
+      categoriaTexto: "TUBERÍA GALVANIZADA",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Tubería galvanizada de pared gruesa para alta presión.",
+      descripcionLarga: "Tubería galvanizada cédula 80, pared más gruesa para aplicaciones de mayor presión. Ideal para líneas hidráulicas, neumáticas y estructurales de alta resistencia.",
+      caracteristicas: [
+        "Diámetros: 1/2\" a 8\"",
+        "Cédula 80",
+        "Mayor espesor de pared",
+        "Roscada NPT",
+        "ASTM A53 Gr.B"
+      ],
+      precio: "$350 - $3,200",
+      tags: ["Galvanizada", "Cédula 80", "Alta presión"]
+    },
+
+    // 2. VÁLVULAS Y LLAVES DE NARIZ
+    {
+      id: 3,
+      nombre: "Válvula de Compuerta",
+      categoria: "valvulas",
+      categoriaTexto: "VÁLVULAS",
+      imagen: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format",
+      descripcionCorta: "Válvula de compuerta para apertura/cierre total.",
+      descripcionLarga: "Válvula de compuerta con vástago ascendente, ideal para aplicaciones que requieren apertura total o cierre total sin restricción al flujo. Disponible en bronce, hierro fundido y acero.",
+      caracteristicas: [
+        "Diámetros: 1/2\" a 24\"",
+        "Presión: Clase 150, 300",
+        "Extremos: bridados, roscados",
+        "Material: Bronce, hierro, acero"
+      ],
+      precio: "$180 - $5,200",
+      tags: ["Compuerta", "Apertura total", "Industrial"]
+    },
+    {
+      id: 4,
+      nombre: "Válvula de Esfera",
+      categoria: "valvulas",
+      categoriaTexto: "VÁLVULAS",
+      imagen: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format",
+      descripcionCorta: "Válvula de esfera para apertura y cierre rápido.",
+      descripcionLarga: "Válvula de esfera de 1/4 de vuelta para apertura y cierre rápido. Ideal para aplicaciones de uso frecuente. Disponible en bronce, acero inoxidable y PVC.",
+      caracteristicas: [
+        "Diámetros: 1/4\" a 8\"",
+        "Dos piezas y tres piezas",
+        "Palanca o mariposa",
+        "Material: Bronce, acero, PVC"
+      ],
+      precio: "$65 - $2,100",
+      tags: ["Esfera", "Apertura rápida", "Industrial"]
+    },
+    {
+      id: 5,
+      nombre: "Llave de Nariz",
+      categoria: "valvulas",
+      categoriaTexto: "VÁLVULAS",
+      imagen: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format",
+      descripcionCorta: "Llave de nariz para control de flujo en instalaciones.",
+      descripcionLarga: "Llave de nariz fabricada en latón forjado, ideal para instalaciones hidráulicas domésticas y comerciales. Permite un control preciso del flujo de agua.",
+      caracteristicas: [
+        "Diámetros: 1/2\", 3/4\", 1\"",
+        "Material: Latón forjado",
+        "Maneral de aluminio",
+        "Para agua hasta 125 PSI"
+      ],
+      precio: "$45 - $120",
+      tags: ["Llave nariz", "Agua", "Doméstico"]
+    },
+    {
+      id: 6,
+      nombre: "Válvula de Retención (Check)",
+      categoria: "valvulas",
+      categoriaTexto: "VÁLVULAS",
+      imagen: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format",
+      descripcionCorta: "Válvula check para evitar flujo inverso.",
+      descripcionLarga: "Válvula de retención tipo check para evitar el flujo inverso en tuberías. Disponible en tipo columpio, pistón o bola. Ideal para bombas y sistemas hidráulicos.",
+      caracteristicas: [
+        "Diámetros: 1/2\" a 12\"",
+        "Tipo: Columpio, pistón",
+        "Material: Bronce, hierro",
+        "Roscada o bridada"
+      ],
+      precio: "$120 - $3,500",
+      tags: ["Check", "Retención", "Flujo inverso"]
+    },
+
+    // 3. ACCESORIOS DE BRONCE
+    {
+      id: 7,
+      nombre: "Niple de Bronce",
+      categoria: "bronce",
+      categoriaTexto: "ACCESORIOS BRONCE",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Niple roscado en bronce para conexiones.",
+      descripcionLarga: "Niple fabricado en bronce de alta resistencia a la corrosión. Ideal para aplicaciones en agua potable, gas y líneas marinas. Roscado NPT en ambos extremos.",
+      caracteristicas: [
+        "Diámetros: 1/8\" a 4\"",
+        "Longitudes: 2\" a 12\"",
+        "Roscado NPT",
+        "Bronce C360 o C377"
+      ],
+      precio: "$15 - $280",
+      tags: ["Niple", "Bronce", "Roscado"]
+    },
+    {
+      id: 8,
+      nombre: "Codo 90° Bronce",
+      categoria: "bronce",
+      categoriaTexto: "ACCESORIOS BRONCE",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Codo de bronce roscado para cambios de dirección.",
+      descripcionLarga: "Codo de 90° fabricado en bronce para cambios de dirección en instalaciones de agua, gas y aire. Roscado NPT hembra en ambos extremos.",
+      caracteristicas: [
+        "Diámetros: 1/4\" a 2\"",
+        "Ángulo: 90°",
+        "Roscado hembra-hembra",
+        "Presión hasta 250 PSI"
+      ],
+      precio: "$20 - $190",
+      tags: ["Codo", "Bronce", "Roscado"]
+    },
+    {
+      id: 9,
+      nombre: "Tee de Bronce",
+      categoria: "bronce",
+      categoriaTexto: "ACCESORIOS BRONCE",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Tee de bronce para derivaciones.",
+      descripcionLarga: "Tee de bronce roscada para derivaciones en instalaciones hidráulicas y de gas. Resistente a la corrosión y de larga duración.",
+      caracteristicas: [
+        "Diámetros: 1/4\" a 2\"",
+        "Roscada NPT",
+        "Presión máxima: 200 PSI",
+        "Bronce de alta resistencia"
+      ],
+      precio: "$25 - $220",
+      tags: ["Tee", "Bronce", "Derivación"]
+    },
+
+    // 4. MEDIDORES Y VÁLVULAS
+    {
+      id: 10,
+      nombre: "Medidor de Agua",
+      categoria: "medidores",
+      categoriaTexto: "MEDIDORES",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Medidor de agua tipo chorro múltiple.",
+      descripcionLarga: "Medidor de agua potable tipo chorro múltiple con lectura directa. Ideal para medir consumo en casas, departamentos y comercios. Aprobado por CONAGUA.",
+      caracteristicas: [
+        "Diámetros: 1/2\", 3/4\", 1\"",
+        "Caudal: 1.5 a 30 m³/h",
+        "Lectura directa en m³",
+        "Cuerpo de bronce"
+      ],
+      precio: "$450 - $1,200",
+      tags: ["Agua", "Medidor", "Consumo"]
+    },
+    {
+      id: 11,
+      nombre: "Manómetro",
+      categoria: "medidores",
+      categoriaTexto: "MEDIDORES",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Manómetro para medición de presión.",
+      descripcionLarga: "Manómetro tipo bourdon para medición de presión en sistemas hidráulicos, neumáticos y de vapor. Caja de acero inoxidable y glicerina.",
+      caracteristicas: [
+        "Diámetro: 2.5\", 4\"",
+        "Rangos: 0-100, 0-300 PSI",
+        "Conexión: 1/4\" NPT",
+        "Precisión ±1.5%"
+      ],
+      precio: "$180 - $450",
+      tags: ["Presión", "Manómetro", "Instrumento"]
+    },
+    {
+      id: 12,
+      nombre: "Termómetro Industrial",
+      categoria: "medidores",
+      categoriaTexto: "MEDIDORES",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Termómetro bimetálico para tuberías.",
+      descripcionLarga: "Termómetro bimetálico para medición de temperatura en tuberías y tanques. Vástago de acero inoxidable, carátula de 4 pulgadas.",
+      caracteristicas: [
+        "Rango: 0-120°C, 0-200°C",
+        "Vástago: 2.5\", 4\", 6\"",
+        "Conexión: 1/2\" NPT",
+        "Carátula de aluminio"
+      ],
+      precio: "$250 - $600",
+      tags: ["Temperatura", "Termómetro", "Industrial"]
+    },
+
+    // 5. TUBERÍA DE ACERO
+    {
+      id: 13,
+      nombre: "Tubería de Acero al Carbón",
+      categoria: "tuberia-acero",
+      categoriaTexto: "TUBERÍA ACERO",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Tubería de acero al carbón sin costura.",
+      descripcionLarga: "Tubería de acero al carbón sin costura (seamless) para aplicaciones de alta presión. Ideal para la industria petrolera, química, vapor y aplicaciones estructurales.",
+      caracteristicas: [
+        "Diámetros: 1/4\" a 36\"",
+        "Cédulas 40, 80, 160, XXS",
+        "Sin costura y con costura",
+        "Acabado negro o galvanizado",
+        "Norma ASTM A106 Gr.B"
+      ],
+      precio: "$150 - $4,200",
+      tags: ["Acero", "Alta presión", "Sin costura"]
+    },
+    {
+      id: 14,
+      nombre: "Tubería de Acero Inoxidable",
+      categoria: "tuberia-acero",
+      categoriaTexto: "TUBERÍA ACERO",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Tubería de acero inoxidable para aplicaciones especiales.",
+      descripcionLarga: "Tubería de acero inoxidable grado 304 y 316. Resistente a la corrosión y altas temperaturas. Ideal para industria alimenticia, farmacéutica y química.",
+      caracteristicas: [
+        "Diámetros: 1/4\" a 12\"",
+        "Cédulas 10, 40, 80",
+        "Acero inoxidable 304/316",
+        "Pulido interior y exterior"
+      ],
+      precio: "$350 - $6,500",
+      tags: ["Inoxidable", "304", "316", "Sanitario"]
+    },
+
+    // 6. CONEXIONES FIERRO FUNDIDO
+    {
+      id: 15,
+      nombre: "Codo Fierro Fundido 90°",
+      categoria: "fierro-fundido",
+      categoriaTexto: "FIERRO FUNDIDO",
+      imagen: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format",
+      descripcionCorta: "Codo de fierro fundido para drenaje y alcantarillado.",
+      descripcionLarga: "Codo de fierro fundido para sistemas de drenaje, alcantarillado y ventilación. Resistente y duradero, con campana y espiga para unión hermética.",
+      caracteristicas: [
+        "Diámetros: 2\" a 12\"",
+        "Ángulo: 90°, 45°",
+        "Unión campana-espiga",
+        "Con empaque de hule"
+      ],
+      precio: "$85 - $950",
+      tags: ["Fierro fundido", "Drenaje", "Alcantarillado"]
+    },
+    {
+      id: 16,
+      nombre: "Yee Fierro Fundido",
+      categoria: "fierro-fundido",
+      categoriaTexto: "FIERRO FUNDIDO",
+      imagen: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format",
+      descripcionCorta: "Yee sanitario de fierro fundido.",
+      descripcionLarga: "Yee de fierro fundido para derivaciones en sistemas sanitarios y de drenaje. Conexión campana-espiga con empaque de hule para sellado hermético.",
+      caracteristicas: [
+        "Diámetros: 4\" a 10\"",
+        "Para drenaje sanitario",
+        "Con empaque incluido",
+        "Alta resistencia mecánica"
+      ],
+      precio: "$120 - $1,200",
+      tags: ["Yee", "Sanitario", "Drenaje"]
+    },
+    {
+      id: 17,
+      nombre: "Adaptador Fierro Fundido",
+      categoria: "fierro-fundido",
+      categoriaTexto: "FIERRO FUNDIDO",
+      imagen: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format",
+      descripcionCorta: "Adaptador para cambio de diámetro.",
+      descripcionLarga: "Adaptador de fierro fundido para cambio de diámetro en tuberías de drenaje y alcantarillado. Conexión campana-espiga.",
+      caracteristicas: [
+        "Combinaciones de diámetros",
+        "Para drenaje sanitario",
+        "Con empaque de neopreno",
+        "Instalación rápida"
+      ],
+      precio: "$90 - $650",
+      tags: ["Adaptador", "Cambio diámetro", "Drenaje"]
+    },
+
+    // 7. SOPORTERÍA
+    {
+      id: 18,
+      nombre: "Abrazadera tipo Omega",
+      categoria: "soporteria",
+      categoriaTexto: "SOPORTERÍA",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Abrazadera metálica para sujeción de tuberías.",
+      descripcionLarga: "Abrazadera tipo omega fabricada en acero galvanizado con tornillería incluida. Ideal para fijar tuberías a muros, techos y estructuras.",
+      caracteristicas: [
+        "Diámetros: 1/2\" a 12\"",
+        "Material: Acero galvanizado",
+        "Con empaque de neopreno",
+        "Tornillería incluida"
+      ],
+      precio: "$12 - $220",
+      tags: ["Abrazadera", "Sujeción", "Soporte"]
+    },
+    {
+      id: 19,
+      nombre: "Base tipo pescante",
+      categoria: "soporteria",
+      categoriaTexto: "SOPORTERÍA",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Base para soporte de tubería en piso.",
+      descripcionLarga: "Base tipo pescante para soporte de tubería en piso o losa. Fabricada en acero estructural con recubrimiento galvanizado. Incluye tornillos de nivelación.",
+      caracteristicas: [
+        "Altura: 100 a 300 mm",
+        "Base cuadrada o redonda",
+        "Capacidad: hasta 500 kg",
+        "Galvanizado electrolítico"
+      ],
+      precio: "$85 - $350",
+      tags: ["Base", "Pescante", "Piso"]
+    },
+    {
+      id: 20,
+      nombre: "Colgante para tubería",
+      categoria: "soporteria",
+      categoriaTexto: "SOPORTERÍA",
+      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      descripcionCorta: "Colgante ajustable para suspender tuberías.",
+      descripcionLarga: "Sistema de colgante para suspensión de tuberías en techos y estructuras. Incluye varilla roscada, abrazadera y tuercas de nivelación.",
+      caracteristicas: [
+        "Diámetros: 1/2\" a 8\"",
+        "Altura ajustable",
+        "Galvanizado",
+        "Capacidad de carga: 200 kg"
+      ],
+      precio: "$45 - $280",
+      tags: ["Colgante", "Suspensión", "Techo"]
+    }
+  ];
+
+  // Variables globales
+  let categoriaActual = 'todos';
+
+  // ===== CARGAR PRODUCTOS =====
+  function cargarProductos(categoria = 'todos') {
+    const grid = document.getElementById('productosGrid');
+    if (!grid) return;
+    
+    categoriaActual = categoria;
+    
+    // Actualizar clase activa en botones de filtro
+    document.querySelectorAll('.filtro-btn').forEach(btn => {
+      btn.classList.remove('active');
+      if (categoria === 'todos' && btn.textContent.trim() === 'TODOS') {
+        btn.classList.add('active');
+      } else if (btn.textContent.toLowerCase().includes(categoria.replace('-', ' ')) && categoria !== 'todos') {
+        btn.classList.add('active');
+      }
+    });
+
+    // Filtrar productos
+    const productosFiltrados = categoria === 'todos' 
+      ? productos 
+      : productos.filter(p => p.categoria === categoria);
+
+    // Generar HTML
+    let html = '';
+    productosFiltrados.forEach(p => {
+      html += `
+        <div class="producto-card" data-categoria="${p.categoria}">
+          <div class="producto-imagen">
+            <img src="${p.imagen}" alt="${p.nombre}">
+            <span class="producto-tag">${p.categoriaTexto}</span>
+          </div>
+          <div class="producto-info">
+            <span class="producto-categoria">${p.categoriaTexto}</span>
+            <h3>${p.nombre}</h3>
+            <p class="producto-descripcion">${p.descripcionCorta}</p>
+            <button class="btn-ver-detalle" onclick="verDetalle(${p.id})">
+              <i class="fas fa-eye"></i> VER DETALLE
+            </button>
+          </div>
+        </div>
+      `;
+    });
+
+    grid.innerHTML = html;
+  }
+
+  // ===== VER DETALLE EN MODAL =====
+  function verDetalle(id) {
+    const producto = productos.find(p => p.id === id);
+    if (!producto) return;
+
+    const modalContenido = document.getElementById('modalContenido');
+    const modalOverlay = document.getElementById('modalOverlay');
+
+    let caracteristicasHTML = '';
+    producto.caracteristicas.forEach(c => {
+      caracteristicasHTML += `<li><i class="fas fa-check-circle"></i> ${c}</li>`;
+    });
+
+    let tagsHTML = '';
+    producto.tags.forEach(t => {
+      tagsHTML += `<span style="display: inline-block; background: var(--fondo-claro); padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.8rem; margin-right: 0.5rem; margin-bottom: 0.5rem;">${t}</span>`;
+    });
+
+    modalContenido.innerHTML = `
+      <div class="modal-grid">
+        <div class="modal-imagen">
+          <img src="${producto.imagen}" alt="${producto.nombre}">
+        </div>
+        <div class="modal-info">
+          <span class="modal-categoria-badge">${producto.categoriaTexto}</span>
+          <h2>${producto.nombre}</h2>
+          <p class="modal-descripcion">${producto.descripcionLarga}</p>
+          
+          <div class="modal-caracteristicas">
+            <h3>Características:</h3>
+            <ul>
+              ${caracteristicasHTML}
+            </ul>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            ${tagsHTML}
+          </div>
+
+          <div class="modal-precio">
+            ${producto.precio} <span>precio aprox por pieza</span>
+          </div>
+
+          <div class="modal-botones">
+            <button class="btn-cotizar" onclick="cerrarModal(); document.getElementById('contacto').scrollIntoView({behavior: 'smooth'});">
+              <i class="fas fa-file-invoice"></i> COTIZAR
+            </button>
+            <a href="https://wa.me/528183456789?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(producto.nombre)}" target="_blank" class="btn-whatsapp">
+              <i class="fab fa-whatsapp"></i> WHATSAPP
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+
+    modalOverlay.classList.add('active');
+    document.body.classList.add('modal-abierto');
+  }
+
+  // ===== CERRAR MODAL =====
+  function cerrarModal() {
+    const modalOverlay = document.getElementById('modalOverlay');
+    modalOverlay.classList.remove('active');
+    document.body.classList.remove('modal-abierto');
+  }
+
+  // ===== FILTRAR PRODUCTOS =====
+  function filtrarProductos(categoria) {
+    cargarProductos(categoria);
+    
+    // Scroll suave hacia la sección de productos
+    document.querySelector('.productos-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ===== CERRAR MODAL CON ESC =====
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      cerrarModal();
+    }
+  });
+
+  // ===== CERRAR MODAL CLICK FUERA =====
+  document.getElementById('modalOverlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('modalOverlay')) {
+      cerrarModal();
+    }
+  });
+
+  // ===== INICIALIZAR =====
+  document.addEventListener('DOMContentLoaded', () => {
+    cargarProductos('todos');
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Menú móvil
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    const overlay = document.getElementById('overlay');
+    const dropdown = document.getElementById('productosDropdown');
+    const dropdownBtn = document.getElementById('dropdownBtn');
+    
+    function toggleMenu() {
+      nav.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.classList.toggle('menu-abierto');
+      const icon = hamburger.querySelector('i');
+      icon.className = nav.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+      if (dropdown) dropdown.classList.remove('active');
+    }
+
+    function cerrarMenu() {
+      nav.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.classList.remove('menu-abierto');
+      hamburger.querySelector('i').className = 'fas fa-bars';
+      if (dropdown) dropdown.classList.remove('active');
+    }
+
+    hamburger?.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
+    overlay?.addEventListener('click', cerrarMenu);
+
+    // Dropdown móvil
+    if (dropdown && dropdownBtn) {
+      dropdownBtn.addEventListener('click', (e) => {
+        if (window.innerWidth <= 900) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdown.classList.toggle('active');
+          const icon = dropdownBtn.querySelector('i');
+          icon.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+      });
+    }
+
+    // Cerrar menú al hacer clic en enlaces
+    document.querySelectorAll('.nav-link, .submenu a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (link === dropdownBtn && window.innerWidth <= 900) return;
+        if (window.innerWidth <= 900) cerrarMenu();
+      });
+    });
+
+    // Cerrar con Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('active')) cerrarMenu();
+    });
+  });
+</script>
+</body>
+</html>

@@ -177,6 +177,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      cursor: pointer;
     }
 
     .submenu a i {
@@ -212,7 +213,6 @@
       z-index: 1001;
       width: 44px;
       height: 44px;
-      display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 8px;
@@ -243,13 +243,10 @@
       left: 0;
       display: none;
       z-index: 999;
-      opacity: 0;
-      transition: opacity 0.3s ease;
     }
     
     .overlay.active {
       display: block;
-      opacity: 1;
     }
 
     /* ===== HERO PRODUCTOS ===== */
@@ -471,13 +468,10 @@
       display: none;
       align-items: center;
       justify-content: center;
-      opacity: 0;
-      transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     .modal-overlay.active {
       display: flex;
-      opacity: 1;
     }
 
     .modal-contenedor {
@@ -488,16 +482,15 @@
       overflow-y: auto;
       border-radius: 40px;
       position: relative;
-      transform: scale(0.9) translateY(20px);
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
       box-shadow: 
         0 50px 100px -20px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.1) inset,
-        0 0 30px rgba(230, 180, 80, 0.2);
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
     }
 
     .modal-overlay.active .modal-contenedor {
-      transform: scale(1) translateY(0);
+      transform: scale(1);
     }
 
     .modal-cerrar {
@@ -513,7 +506,7 @@
       font-size: 1.3rem;
       cursor: pointer;
       z-index: 10;
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -522,12 +515,8 @@
 
     .modal-cerrar:hover {
       background: var(--azul-medio);
-      transform: rotate(90deg) scale(1.1);
+      transform: rotate(90deg);
       box-shadow: 0 15px 30px -5px rgba(30, 74, 95, 0.5);
-    }
-
-    .modal-cerrar:active {
-      transform: rotate(90deg) scale(0.95);
     }
 
     .modal-contenido {
@@ -574,8 +563,6 @@
       font-size: 0.9rem;
       box-shadow: 0 10px 20px -5px rgba(230, 180, 80, 0.4);
       z-index: 2;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255,255,255,0.3);
     }
 
     .modal-info {
@@ -592,8 +579,6 @@
       font-size: 0.9rem;
       margin-bottom: 1.5rem;
       letter-spacing: 1px;
-      box-shadow: 0 10px 20px -5px rgba(255, 107, 74, 0.3);
-      border: 1px solid rgba(255,255,255,0.3);
     }
 
     .modal-info h2 {
@@ -679,11 +664,6 @@
     .modal-caracteristicas li i {
       color: var(--coral);
       font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .modal-caracteristicas li:hover i {
-      color: var(--azul-medio);
     }
 
     .modal-tags {
@@ -701,14 +681,12 @@
       font-size: 0.85rem;
       font-weight: 600;
       transition: all 0.3s ease;
-      border: 1px solid transparent;
     }
 
     .modal-tag:hover {
       background: var(--azul-medio);
       color: white;
       transform: translateY(-2px);
-      border-color: var(--dorado-suave);
     }
 
     .modal-precio {
@@ -718,20 +696,20 @@
       border-radius: 50px;
       margin-bottom: 2rem;
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: space-between;
-      box-shadow: 0 20px 40px -10px rgba(30, 74, 95, 0.4);
-      border: 1px solid rgba(255,255,255,0.2);
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .modal-precio-valor {
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: 800;
       letter-spacing: -1px;
     }
 
     .modal-precio-valor span {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 400;
       opacity: 0.8;
       margin-left: 0.5rem;
@@ -743,121 +721,53 @@
       border-radius: 50px;
       font-size: 0.9rem;
       font-weight: 600;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255,255,255,0.3);
     }
 
     .modal-botones {
       display: flex;
       gap: 1rem;
       margin-top: 2rem;
+      flex-wrap: wrap;
     }
 
-    .btn-cotizar {
-      flex: 2;
-      padding: 1.2rem;
-      background: linear-gradient(135deg, var(--coral), #ff8a6a);
-      color: white;
-      border: none;
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      box-shadow: 0 15px 30px -8px rgba(255, 107, 74, 0.4);
-      border: 1px solid rgba(255,255,255,0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-cotizar::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .btn-cotizar:hover::before {
-      left: 100%;
-    }
-
-    .btn-cotizar:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 20px 40px -8px rgba(255, 107, 74, 0.6);
-    }
-
-    .btn-whatsapp {
+    .btn-cotizar, .btn-whatsapp {
       flex: 1;
+      min-width: 200px;
       padding: 1.2rem;
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: white;
       border: none;
       border-radius: 20px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.8rem;
       text-decoration: none;
-      box-shadow: 0 15px 30px -8px rgba(37, 211, 102, 0.4);
       border: 1px solid rgba(255,255,255,0.3);
-      position: relative;
-      overflow: hidden;
     }
 
-    .btn-whatsapp::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s ease;
+    .btn-cotizar {
+      background: linear-gradient(135deg, var(--coral), #ff8a6a);
+      color: white;
+      box-shadow: 0 15px 30px -8px rgba(255, 107, 74, 0.4);
     }
 
-    .btn-whatsapp:hover::before {
-      left: 100%;
+    .btn-cotizar:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px -8px rgba(255, 107, 74, 0.6);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      box-shadow: 0 15px 30px -8px rgba(37, 211, 102, 0.4);
     }
 
     .btn-whatsapp:hover {
-      transform: translateY(-3px) scale(1.02);
+      transform: translateY(-3px);
       box-shadow: 0 20px 40px -8px rgba(37, 211, 102, 0.6);
-    }
-
-    /* Animación de entrada para los elementos del modal */
-    .modal-info > * {
-      animation: fadeInUp 0.5s ease forwards;
-      opacity: 0;
-    }
-
-    .modal-info > *:nth-child(1) { animation-delay: 0.1s; }
-    .modal-info > *:nth-child(2) { animation-delay: 0.2s; }
-    .modal-info > *:nth-child(3) { animation-delay: 0.3s; }
-    .modal-info > *:nth-child(4) { animation-delay: 0.4s; }
-    .modal-info > *:nth-child(5) { animation-delay: 0.5s; }
-    .modal-info > *:nth-child(6) { animation-delay: 0.6s; }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     /* Scroll personalizado */
@@ -873,10 +783,6 @@
     .modal-contenedor::-webkit-scrollbar-thumb {
       background: var(--coral);
       border-radius: 10px;
-    }
-
-    .modal-contenedor::-webkit-scrollbar-thumb:hover {
-      background: var(--azul-medio);
     }
 
     /* ===== SECCIÓN DE CONTACTO ===== */
@@ -906,7 +812,7 @@
       display: flex;
       gap: 1.2rem;
       margin-bottom: 2rem;
-      align-items: center;
+      align-items: flex-start;
       transition: all 0.3s ease;
       padding: 1rem;
       border-radius: 12px;
@@ -920,12 +826,7 @@
     .contacto-detalle i {
       font-size: 1.8rem;
       color: var(--dorado-suave);
-      width: 40px;
-      transition: all 0.3s ease;
-    }
-
-    .contacto-detalle:hover i {
-      transform: scale(1.2);
+      min-width: 40px;
     }
 
     .contacto-detalle p {
@@ -939,12 +840,6 @@
       border-radius: 30px;
       backdrop-filter: blur(8px);
       border: 1px solid rgba(230,180,80,0.3);
-      transition: all 0.3s ease;
-    }
-
-    .contacto-formulario:hover {
-      border-color: var(--dorado-suave);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     .contacto-formulario h4 {
@@ -962,24 +857,16 @@
       border-radius: 12px;
       color: white;
       font-family: inherit;
-      transition: all 0.3s ease;
     }
 
     .campo:focus {
       outline: none;
       border-color: var(--dorado-suave);
       background: rgba(255,255,255,0.15);
-      transform: scale(1.02);
     }
 
     .campo::placeholder {
       color: rgba(255,255,255,0.6);
-      transition: all 0.3s ease;
-    }
-
-    .campo:focus::placeholder {
-      opacity: 0.5;
-      transform: translateX(10px);
     }
 
     .btn-enviar {
@@ -1021,11 +908,6 @@
     .footer-logo img {
       height: 50px;
       margin-bottom: 1rem;
-      transition: transform 0.3s ease;
-    }
-
-    .footer-logo img:hover {
-      transform: scale(1.05);
     }
 
     .footer-logo p {
@@ -1053,12 +935,12 @@
       text-decoration: none;
       transition: all 0.3s ease;
       font-size: 0.9rem;
+      cursor: pointer;
     }
 
     .footer-col ul li a:hover {
       color: var(--dorado-suave);
-      transform: translateX(5px);
-      display: inline-block;
+      padding-left: 5px;
     }
 
     .footer-social {
@@ -1082,7 +964,7 @@
     .footer-social a:hover {
       background: var(--dorado-suave);
       color: var(--azul-medio);
-      transform: translateY(-3px) rotate(360deg);
+      transform: translateY(-3px);
     }
 
     .footer-bottom {
@@ -1104,7 +986,9 @@
     }
 
     @media (max-width: 900px) {
-      .hamburger { display: flex; }
+      .hamburger { 
+        display: flex; 
+      }
       
       .nav {
         position: fixed;
@@ -1116,40 +1000,62 @@
         flex-direction: column;
         padding: 6rem 2rem 2rem;
         gap: 1rem;
-        transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: right 0.4s ease;
         align-items: flex-start;
         overflow-y: auto;
         z-index: 1000;
       }
 
-      .nav.active { right: 0; }
+      .nav.active { 
+        right: 0; 
+      }
 
-      .nav-link { font-size: 1.2rem; width: 100%; text-align: left; }
+      .nav-link { 
+        font-size: 1.2rem; 
+        width: 100%; 
+        text-align: left; 
+      }
 
-      .dropdown { width: 100%; }
+      .dropdown { 
+        width: 100%; 
+      }
       
-      .dropdown .nav-link { justify-content: space-between; }
+      .dropdown .nav-link { 
+        display: flex;
+        justify-content: space-between; 
+        width: 100%;
+      }
       
-      .dropdown:hover .submenu { display: none; }
+      .dropdown:hover .submenu { 
+        display: none; 
+      }
       
       .dropdown.active .submenu {
         display: flex !important;
         position: static;
         background: rgba(255,255,255,0.1);
         border: none;
+        margin-top: 0.5rem;
       }
-      
-      .dropdown.active .nav-link i { transform: rotate(180deg); }
       
       .submenu {
         position: static;
         background: transparent;
+        width: 100%;
       }
       
-      .submenu a { color: white; }
+      .submenu a { 
+        color: white; 
+        padding: 12px 20px;
+      }
       
-      .hero-productos { margin-top: 82px; }
-      .hero-productos h1 { font-size: 2.5rem; }
+      .hero-productos { 
+        margin-top: 82px; 
+      }
+      
+      .hero-productos h1 { 
+        font-size: 2.5rem; 
+      }
       
       .modal-caracteristicas ul {
         grid-template-columns: 1fr;
@@ -1168,10 +1074,22 @@
     }
 
     @media (max-width: 600px) {
-      .productos-grid { grid-template-columns: 1fr; }
-      .filtros-wrapper { flex-direction: column; border-radius: 20px; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .hero-productos h1 { font-size: 2rem; }
+      .productos-grid { 
+        grid-template-columns: 1fr; 
+      }
+      
+      .filtros-wrapper { 
+        flex-direction: column; 
+        border-radius: 20px; 
+      }
+      
+      .footer-grid { 
+        grid-template-columns: 1fr; 
+      }
+      
+      .hero-productos h1 { 
+        font-size: 2rem; 
+      }
       
       .modal-contenido {
         padding: 1.5rem;
@@ -1204,13 +1122,12 @@
         <button class="nav-link active" id="dropdownBtn">
           PRODUCTOS <i class="fas fa-chevron-down"></i>
         </button>
-        <!-- SUBNÚ CON LOS HREF CORRECTOS (filtran en la misma página) -->
         <div class="submenu">
-          <a href="#" onclick="filtrarProductos('tuberia-galvanizada'); return false;"><i class="fas fa-pipe"></i> Tubería Galvanizada</a>
-          <a href="#" onclick="filtrarProductos('valvulas'); return false;"><i class="fas fa-valve"></i> Válvulas y Llaves</a>
+          <a href="#" onclick="filtrarProductos('tuberia-galvanizada'); return false;"><i class="fas fa-wrench"></i> Tubería Galvanizada</a>
+          <a href="#" onclick="filtrarProductos('valvulas'); return false;"><i class="fas fa-water"></i> Válvulas y Llaves</a>
           <a href="#" onclick="filtrarProductos('bronce'); return false;"><i class="fas fa-tools"></i> Accesorios de Bronce</a>
           <a href="#" onclick="filtrarProductos('medidores'); return false;"><i class="fas fa-tachometer-alt"></i> Medidores y Válvulas</a>
-          <a href="#" onclick="filtrarProductos('tuberia-acero'); return false;"><i class="fas fa-pipe"></i> Tubería de Acero</a>
+          <a href="#" onclick="filtrarProductos('tuberia-acero'); return false;"><i class="fas fa-wrench"></i> Tubería de Acero</a>
           <a href="#" onclick="filtrarProductos('fierro-fundido'); return false;"><i class="fas fa-bolt"></i> Conexiones Fierro Fundido</a>
           <a href="#" onclick="filtrarProductos('soporteria'); return false;"><i class="fas fa-clipboard"></i> Soportería</a>
         </div>
@@ -1343,7 +1260,7 @@
     </div>
   </div>
   
-  <!-- ENLACE SÚPER SUTIL A HIDROSISTEMAS EN EL FOOTER -->
+  <!-- ENLACE SÚPER SUTIL A HIDROSISTEMAS -->
   <div style="text-align: center; margin-bottom: 1rem; opacity: 0.2; font-size: 0.7rem;">
     <a href="https://www.hidrosistemas.com.mx/" target="_blank" style="color: #aaa; text-decoration: none; letter-spacing: 1px;">
       <i class="fas fa-water" style="margin-right: 0.3rem;"></i> hidrosistemas
@@ -1358,7 +1275,7 @@
 <script>
   // ===== BASE DE DATOS DE PRODUCTOS =====
   const productos = [
-    // 1. TUBERÍA GALVANIZADA
+    // Tubería Galvanizada
     {
       id: 1,
       nombre: "Tubería Galvanizada Cédula 40",
@@ -1396,7 +1313,7 @@
       tags: ["Galvanizada", "Cédula 80", "Alta presión"]
     },
 
-    // 2. VÁLVULAS Y LLAVES DE NARIZ
+    // Válvulas y Llaves
     {
       id: 3,
       nombre: "Válvula de Compuerta",
@@ -1466,7 +1383,7 @@
       tags: ["Check", "Retención", "Flujo inverso"]
     },
 
-    // 3. ACCESORIOS DE BRONCE
+    // Accesorios de Bronce
     {
       id: 7,
       nombre: "Niple de Bronce",
@@ -1519,7 +1436,7 @@
       tags: ["Tee", "Bronce", "Derivación"]
     },
 
-    // 4. MEDIDORES Y VÁLVULAS
+    // Medidores
     {
       id: 10,
       nombre: "Medidor de Agua",
@@ -1572,7 +1489,7 @@
       tags: ["Temperatura", "Termómetro", "Industrial"]
     },
 
-    // 5. TUBERÍA DE ACERO
+    // Tubería de Acero
     {
       id: 13,
       nombre: "Tubería de Acero al Carbón",
@@ -1609,7 +1526,7 @@
       tags: ["Inoxidable", "304", "316", "Sanitario"]
     },
 
-    // 6. CONEXIONES FIERRO FUNDIDO
+    // Fierro Fundido
     {
       id: 15,
       nombre: "Codo Fierro Fundido 90°",
@@ -1662,7 +1579,7 @@
       tags: ["Adaptador", "Cambio diámetro", "Drenaje"]
     },
 
-    // 7. SOPORTERÍA
+    // Soportería
     {
       id: 18,
       nombre: "Abrazadera tipo Omega",
@@ -1742,7 +1659,7 @@
       btn.classList.remove('active');
       if (categoria === 'todos' && btn.textContent.trim() === 'TODOS') {
         btn.classList.add('active');
-      } else if (btn.textContent.toLowerCase().includes(categoria.replace('-', ' ')) && categoria !== 'todos') {
+      } else if (categoria !== 'todos' && btn.textContent.toLowerCase().includes(categoria.replace('-', ' '))) {
         btn.classList.add('active');
       }
     });
@@ -1776,7 +1693,7 @@
     grid.innerHTML = html;
   }
 
-  // ===== VER DETALLE EN MODAL (VERSIÓN PREMIUM) =====
+  // ===== VER DETALLE EN MODAL =====
   function verDetalle(id) {
     const producto = productos.find(p => p.id === id);
     if (!producto) return;
@@ -1853,25 +1770,14 @@
     cargarProductos(categoria);
     
     // Scroll suave hacia la sección de productos
-    document.querySelector('.productos-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const productosSection = document.querySelector('.productos-section');
+    if (productosSection) {
+      productosSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
-  // ===== CERRAR MODAL CON ESC =====
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      cerrarModal();
-    }
-  });
-
-  // ===== CERRAR MODAL CLICK FUERA =====
-  document.getElementById('modalOverlay').addEventListener('click', (e) => {
-    if (e.target === document.getElementById('modalOverlay')) {
-      cerrarModal();
-    }
-  });
-
   // ===== INICIALIZAR =====
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', function() {
     // Verificar si hay categoría en la URL
     const categoriaUrl = getParameterByName('categoria');
     
@@ -1883,8 +1789,12 @@
 
     // Header scroll effect
     const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 50);
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     });
 
     // Menú móvil
@@ -1894,51 +1804,72 @@
     const dropdown = document.getElementById('productosDropdown');
     const dropdownBtn = document.getElementById('dropdownBtn');
     
-    function toggleMenu() {
-      nav.classList.toggle('active');
-      overlay.classList.toggle('active');
-      document.body.classList.toggle('menu-abierto');
-      const icon = hamburger.querySelector('i');
-      icon.className = nav.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
-      if (dropdown) dropdown.classList.remove('active');
+    if (hamburger && nav && overlay) {
+      function toggleMenu() {
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.classList.toggle('menu-abierto');
+        const icon = hamburger.querySelector('i');
+        icon.className = nav.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+        if (dropdown) dropdown.classList.remove('active');
+      }
+
+      function cerrarMenu() {
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('menu-abierto');
+        hamburger.querySelector('i').className = 'fas fa-bars';
+        if (dropdown) dropdown.classList.remove('active');
+      }
+
+      hamburger.addEventListener('click', function(e) { 
+        e.stopPropagation(); 
+        toggleMenu(); 
+      });
+      
+      overlay.addEventListener('click', cerrarMenu);
+
+      // Dropdown móvil
+      if (dropdown && dropdownBtn) {
+        dropdownBtn.addEventListener('click', function(e) {
+          if (window.innerWidth <= 900) {
+            e.preventDefault();
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+            const icon = dropdownBtn.querySelector('i');
+            if (icon) {
+              icon.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
+          }
+        });
+      }
+
+      // Cerrar menú al hacer clic en enlaces
+      document.querySelectorAll('.nav-link, .submenu a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          if (link === dropdownBtn && window.innerWidth <= 900) return;
+          if (window.innerWidth <= 900) cerrarMenu();
+        });
+      });
     }
 
-    function cerrarMenu() {
-      nav.classList.remove('active');
-      overlay.classList.remove('active');
-      document.body.classList.remove('menu-abierto');
-      hamburger.querySelector('i').className = 'fas fa-bars';
-      if (dropdown) dropdown.classList.remove('active');
-    }
+    // Modal events
+    const modalOverlay = document.getElementById('modalOverlay');
+    if (modalOverlay) {
+      // Cerrar con Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          cerrarModal();
+        }
+      });
 
-    hamburger?.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
-    overlay?.addEventListener('click', cerrarMenu);
-
-    // Dropdown móvil
-    if (dropdown && dropdownBtn) {
-      dropdownBtn.addEventListener('click', (e) => {
-        if (window.innerWidth <= 900) {
-          e.preventDefault();
-          e.stopPropagation();
-          dropdown.classList.toggle('active');
-          const icon = dropdownBtn.querySelector('i');
-          icon.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+      // Cerrar click fuera
+      modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) {
+          cerrarModal();
         }
       });
     }
-
-    // Cerrar menú al hacer clic en enlaces
-    document.querySelectorAll('.nav-link, .submenu a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        if (link === dropdownBtn && window.innerWidth <= 900) return;
-        if (window.innerWidth <= 900) cerrarMenu();
-      });
-    });
-
-    // Cerrar con Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && nav.classList.contains('active')) cerrarMenu();
-    });
   });
 </script>
 </body>

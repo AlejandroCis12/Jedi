@@ -58,9 +58,7 @@
         <button class="filtro-btn active" onclick="filtrarProductos('todos')">TODOS</button>
         <button class="filtro-btn" onclick="filtrarProductos('tuberia-galvanizada')">TUBERÍA GALVANIZADA</button>
         <button class="filtro-btn" onclick="filtrarProductos('valvulas')">VÁLVULAS Y LLAVES</button>
-        <button class="filtro-btn" onclick="filtrarProductos('bronce')">ACCESORIOS BRONCE</button>
         <button class="filtro-btn" onclick="filtrarProductos('medidores')">MEDIDORES Y VÁLVULAS</button>
-        <button class="filtro-btn" onclick="filtrarProductos('tuberia-acero')">TUBERÍA DE ACERO</button>
         <button class="filtro-btn" onclick="filtrarProductos('fierro-fundido')">CONEXIONES FIERRO FUNDIDO</button>
         <button class="filtro-btn" onclick="filtrarProductos('soporteria')">SOPORTERÍA</button>
       </div>
@@ -155,12 +153,12 @@
     // Tubería Galvanizada
     {
       id: 1,
-      nombre: "Tubería Galvanizada Cédula 40",
+      nombre: "Tubería Galvanizada",
       categoria: "tuberia-galvanizada",
       categoriaTexto: "TUBERÍA GALVANIZADA",
-      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
+      imagen: "/Imagenes/Productos/Galvanizado.png",
       descripcionCorta: "Tubería de acero galvanizado por inmersión en caliente.",
-      descripcionLarga: "Tubería de acero al carbón con recubrimiento de zinc que la protege contra la corrosión. Ideal para líneas de agua, gas, aire comprimido y aplicaciones estructurales. Resistente a la intemperie.",
+      descripcionLarga: "Tubería de acero al carbón con recubrimiento de zinc que la protege contra la corrosión. Ideal para líneas de agua. Resistente a la intemperie.",
       caracteristicas: [
         "Diámetros: 1/2\" a 12\"",
         "Cédula 40 y 80",
@@ -168,26 +166,7 @@
         "Roscada en ambos extremos",
         "Norma ASTM A53"
       ],
-      precio: "$280 - $2,500",
-      tags: ["Galvanizada", "Cédula 40", "Agua", "Gas", "Estructural"]
-    },
-    {
-      id: 2,
-      nombre: "Tubería Galvanizada Cédula 80",
-      categoria: "tuberia-galvanizada",
-      categoriaTexto: "TUBERÍA GALVANIZADA",
-      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
-      descripcionCorta: "Tubería galvanizada de pared gruesa para alta presión.",
-      descripcionLarga: "Tubería galvanizada cédula 80, pared más gruesa para aplicaciones de mayor presión. Ideal para líneas hidráulicas, neumáticas y estructurales de alta resistencia.",
-      caracteristicas: [
-        "Diámetros: 1/2\" a 8\"",
-        "Cédula 80",
-        "Mayor espesor de pared",
-        "Roscada NPT",
-        "ASTM A53 Gr.B"
-      ],
-      precio: "$350 - $3,200",
-      tags: ["Galvanizada", "Cédula 80", "Alta presión"]
+      tags: ["Galvanizada", "Agua", "Estructural"]
     },
 
     // Válvulas y Llaves
@@ -196,16 +175,15 @@
       nombre: "Válvula de Compuerta",
       categoria: "valvulas",
       categoriaTexto: "VÁLVULAS",
-      imagen: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format",
+      imagen: "Imagenes/productos/Vcompuerta.png",
       descripcionCorta: "Válvula de compuerta para apertura/cierre total.",
-      descripcionLarga: "Válvula de compuerta con vástago ascendente, ideal para aplicaciones que requieren apertura total o cierre total sin restricción al flujo. Disponible en bronce, hierro fundido y acero.",
+      descripcionLarga: "Válvula de compuerta con vástago ascendente, ideal para aplicaciones que requieren apertura total o cierre total sin restricción al flujo.",
       caracteristicas: [
         "Diámetros: 1/2\" a 24\"",
         "Presión: Clase 150, 300",
         "Extremos: bridados, roscados",
         "Material: Bronce, hierro, acero"
       ],
-      precio: "$180 - $5,200",
       tags: ["Compuerta", "Apertura total", "Industrial"]
     },
     {
@@ -213,7 +191,7 @@
       nombre: "Válvula de Esfera",
       categoria: "valvulas",
       categoriaTexto: "VÁLVULAS",
-      imagen: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format",
+      imagen: "Imagenes/productos/Vesfera.png",
       descripcionCorta: "Válvula de esfera para apertura y cierre rápido.",
       descripcionLarga: "Válvula de esfera de 1/4 de vuelta para apertura y cierre rápido. Ideal para aplicaciones de uso frecuente. Disponible en bronce, acero inoxidable y PVC.",
       caracteristicas: [
@@ -222,7 +200,6 @@
         "Palanca o mariposa",
         "Material: Bronce, acero, PVC"
       ],
-      precio: "$65 - $2,100",
       tags: ["Esfera", "Apertura rápida", "Industrial"]
     },
     {
@@ -230,7 +207,7 @@
       nombre: "Llave de Nariz",
       categoria: "valvulas",
       categoriaTexto: "VÁLVULAS",
-      imagen: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format",
+      imagen: "Imagenes/productos/Llnariz.png",
       descripcionCorta: "Llave de nariz para control de flujo en instalaciones.",
       descripcionLarga: "Llave de nariz fabricada en latón forjado, ideal para instalaciones hidráulicas domésticas y comerciales. Permite un control preciso del flujo de agua.",
       caracteristicas: [
@@ -239,7 +216,6 @@
         "Maneral de aluminio",
         "Para agua hasta 125 PSI"
       ],
-      precio: "$45 - $120",
       tags: ["Llave nariz", "Agua", "Doméstico"]
     },
     {
@@ -247,7 +223,7 @@
       nombre: "Válvula de Retención (Check)",
       categoria: "valvulas",
       categoriaTexto: "VÁLVULAS",
-      imagen: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format",
+      imagen: "Imagenes/productos/check.png",
       descripcionCorta: "Válvula check para evitar flujo inverso.",
       descripcionLarga: "Válvula de retención tipo check para evitar el flujo inverso en tuberías. Disponible en tipo columpio, pistón o bola. Ideal para bombas y sistemas hidráulicos.",
       caracteristicas: [
@@ -256,63 +232,8 @@
         "Material: Bronce, hierro",
         "Roscada o bridada"
       ],
-      precio: "$120 - $3,500",
       tags: ["Check", "Retención", "Flujo inverso"]
     },
-
-    // Accesorios de Bronce
-    {
-      id: 7,
-      nombre: "Niple de Bronce",
-      categoria: "bronce",
-      categoriaTexto: "ACCESORIOS BRONCE",
-      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
-      descripcionCorta: "Niple roscado en bronce para conexiones.",
-      descripcionLarga: "Niple fabricado en bronce de alta resistencia a la corrosión. Ideal para aplicaciones en agua potable, gas y líneas marinas. Roscado NPT en ambos extremos.",
-      caracteristicas: [
-        "Diámetros: 1/8\" a 4\"",
-        "Longitudes: 2\" a 12\"",
-        "Roscado NPT",
-        "Bronce C360 o C377"
-      ],
-      precio: "$15 - $280",
-      tags: ["Niple", "Bronce", "Roscado"]
-    },
-    {
-      id: 8,
-      nombre: "Codo 90° Bronce",
-      categoria: "bronce",
-      categoriaTexto: "ACCESORIOS BRONCE",
-      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
-      descripcionCorta: "Codo de bronce roscado para cambios de dirección.",
-      descripcionLarga: "Codo de 90° fabricado en bronce para cambios de dirección en instalaciones de agua, gas y aire. Roscado NPT hembra en ambos extremos.",
-      caracteristicas: [
-        "Diámetros: 1/4\" a 2\"",
-        "Ángulo: 90°",
-        "Roscado hembra-hembra",
-        "Presión hasta 250 PSI"
-      ],
-      precio: "$20 - $190",
-      tags: ["Codo", "Bronce", "Roscado"]
-    },
-    {
-      id: 9,
-      nombre: "Tee de Bronce",
-      categoria: "bronce",
-      categoriaTexto: "ACCESORIOS BRONCE",
-      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
-      descripcionCorta: "Tee de bronce para derivaciones.",
-      descripcionLarga: "Tee de bronce roscada para derivaciones en instalaciones hidráulicas y de gas. Resistente a la corrosión y de larga duración.",
-      caracteristicas: [
-        "Diámetros: 1/4\" a 2\"",
-        "Roscada NPT",
-        "Presión máxima: 200 PSI",
-        "Bronce de alta resistencia"
-      ],
-      precio: "$25 - $220",
-      tags: ["Tee", "Bronce", "Derivación"]
-    },
-
     // Medidores
     {
       id: 10,
@@ -347,60 +268,6 @@
       ],
       precio: "$180 - $450",
       tags: ["Presión", "Manómetro", "Instrumento"]
-    },
-    {
-      id: 12,
-      nombre: "Termómetro Industrial",
-      categoria: "medidores",
-      categoriaTexto: "MEDIDORES",
-      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
-      descripcionCorta: "Termómetro bimetálico para tuberías.",
-      descripcionLarga: "Termómetro bimetálico para medición de temperatura en tuberías y tanques. Vástago de acero inoxidable, carátula de 4 pulgadas.",
-      caracteristicas: [
-        "Rango: 0-120°C, 0-200°C",
-        "Vástago: 2.5\", 4\", 6\"",
-        "Conexión: 1/2\" NPT",
-        "Carátula de aluminio"
-      ],
-      precio: "$250 - $600",
-      tags: ["Temperatura", "Termómetro", "Industrial"]
-    },
-
-    // Tubería de Acero
-    {
-      id: 13,
-      nombre: "Tubería de Acero al Carbón",
-      categoria: "tuberia-acero",
-      categoriaTexto: "TUBERÍA ACERO",
-      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
-      descripcionCorta: "Tubería de acero al carbón sin costura.",
-      descripcionLarga: "Tubería de acero al carbón sin costura (seamless) para aplicaciones de alta presión. Ideal para la industria petrolera, química, vapor y aplicaciones estructurales.",
-      caracteristicas: [
-        "Diámetros: 1/4\" a 36\"",
-        "Cédulas 40, 80, 160, XXS",
-        "Sin costura y con costura",
-        "Acabado negro o galvanizado",
-        "Norma ASTM A106 Gr.B"
-      ],
-      precio: "$150 - $4,200",
-      tags: ["Acero", "Alta presión", "Sin costura"]
-    },
-    {
-      id: 14,
-      nombre: "Tubería de Acero Inoxidable",
-      categoria: "tuberia-acero",
-      categoriaTexto: "TUBERÍA ACERO",
-      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
-      descripcionCorta: "Tubería de acero inoxidable para aplicaciones especiales.",
-      descripcionLarga: "Tubería de acero inoxidable grado 304 y 316. Resistente a la corrosión y altas temperaturas. Ideal para industria alimenticia, farmacéutica y química.",
-      caracteristicas: [
-        "Diámetros: 1/4\" a 12\"",
-        "Cédulas 10, 40, 80",
-        "Acero inoxidable 304/316",
-        "Pulido interior y exterior"
-      ],
-      precio: "$350 - $6,500",
-      tags: ["Inoxidable", "304", "316", "Sanitario"]
     },
 
     // Fierro Fundido
@@ -474,23 +341,7 @@
       precio: "$12 - $220",
       tags: ["Abrazadera", "Sujeción", "Soporte"]
     },
-    {
-      id: 19,
-      nombre: "Base tipo pescante",
-      categoria: "soporteria",
-      categoriaTexto: "SOPORTERÍA",
-      imagen: "https://images.unsplash.com/photo-1581092160562-40aa08e6c6f9?q=80&w=2070&auto=format",
-      descripcionCorta: "Base para soporte de tubería en piso.",
-      descripcionLarga: "Base tipo pescante para soporte de tubería en piso o losa. Fabricada en acero estructural con recubrimiento galvanizado. Incluye tornillos de nivelación.",
-      caracteristicas: [
-        "Altura: 100 a 300 mm",
-        "Base cuadrada o redonda",
-        "Capacidad: hasta 500 kg",
-        "Galvanizado electrolítico"
-      ],
-      precio: "$85 - $350",
-      tags: ["Base", "Pescante", "Piso"]
-    },
+
     {
       id: 20,
       nombre: "Colgante para tubería",
@@ -630,20 +481,11 @@
             ${tagsHTML}
           </div>
 
-          <div class="modal-precio">
-            <div class="modal-precio-valor">
-              ${producto.precio} <span>precio aprox. por pieza</span>
-            </div>
-            <div class="modal-precio-badge">
-              <i class="fas fa-tag"></i> IVA incluido
-            </div>
-          </div>
-
           <div class="modal-botones">
             <button class="btn-cotizar" onclick="cerrarModal(); document.getElementById('contacto').scrollIntoView({behavior: 'smooth'});">
               <i class="fas fa-file-invoice"></i> SOLICITAR COTIZACIÓN
             </button>
-            <a href="https://wa.me/528183456789?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(producto.nombre)}%20-%20${encodeURIComponent(producto.categoriaTexto)}" target="_blank" class="btn-whatsapp">
+            <a href="https://wa.me/7714043195?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(producto.nombre)}%20-%20${encodeURIComponent(producto.categoriaTexto)}" target="_blank" class="btn-whatsapp">
               <i class="fab fa-whatsapp"></i> WHATSAPP
             </a>
           </div>

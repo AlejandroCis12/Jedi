@@ -139,12 +139,25 @@ body.modal-abierto {
 /* ===== HERO PRODUCTOS ===== */
 .hero-productos {
   margin-top: 86px;
-  background: linear-gradient(135deg, var(--azul-medio) 0%, #143e50 100%);
-  padding: 4rem 2rem;
+  /* Ruta corregida con el ../ si tu CSS está en una carpeta */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Imagenes/productos/hero-productos.png');
+  background-size: cover;
+  background-position: center;
+  padding: 6rem 2rem; /* Aumenté un poco el padding para que luzca más la imagen */
   text-align: center;
   color: white;
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px; /* Le da una altura mínima fija para que se vea imponente */
+}
+
+.hero-productos h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra en el texto para extra legibilidad */
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .hero-productos::before {

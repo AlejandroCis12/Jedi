@@ -13,6 +13,9 @@
 .hero-contacto {
   margin-top: 86px;
   background: linear-gradient(135deg, var(--azul-medio) 0%, #143e50 100%);
+  background-image: url(../Imagenes/hero-contacto.png); 
+  background-size: cover;
+  background-position: center;
   padding: 4rem 2rem;
   text-align: center;
   color: white;

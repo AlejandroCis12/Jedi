@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/footer.css">
   <link rel="stylesheet" href="styles/Nosotros.css">
+  <link rel="icon" type="image/png" href="Imagenes/Icon.png">
 
 
 </head>
@@ -255,92 +256,7 @@
 
 <!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  (function() {
-    'use strict';
-
-    // ===== INICIALIZAR AOS =====
-    AOS.init({
-      duration: 800,
-      once: true,
-      offset: 100,
-      easing: 'ease-in-out'
-    });
-
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    // Menú móvil
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav');
-    const overlay = document.getElementById('overlay');
-    const dropdown = document.getElementById('productosDropdown');
-    const dropdownBtn = document.getElementById('dropdownBtn');
-    
-    function toggleMenu() {
-      nav.classList.toggle('active');
-      overlay.classList.toggle('active');
-      document.body.classList.toggle('menu-abierto');
-      const icon = hamburger.querySelector('i');
-      if (nav.classList.contains('active')) {
-        icon.className = 'fas fa-times';
-      } else {
-        icon.className = 'fas fa-bars';
-        if (dropdown) dropdown.classList.remove('active');
-      }
-    }
-
-    function cerrarMenu() {
-      nav.classList.remove('active');
-      overlay.classList.remove('active');
-      document.body.classList.remove('menu-abierto');
-      hamburger.querySelector('i').className = 'fas fa-bars';
-      if (dropdown) dropdown.classList.remove('active');
-    }
-
-    hamburger?.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
-    overlay?.addEventListener('click', cerrarMenu);
-
-    // Dropdown móvil
-    if (dropdown && dropdownBtn) {
-      dropdownBtn.addEventListener('click', (e) => {
-        if (window.innerWidth <= 900) {
-          e.preventDefault();
-          e.stopPropagation();
-          dropdown.classList.toggle('active');
-          const icon = dropdownBtn.querySelector('i');
-          icon.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
-        }
-      });
-    }
-
-    // Cerrar menú al hacer clic en enlaces
-    document.querySelectorAll('.nav-link, .submenu a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        if (link === dropdownBtn && window.innerWidth <= 900) return;
-        if (window.innerWidth <= 900) cerrarMenu();
-      });
-    });
-
-    // Cerrar menú al redimensionar
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 900 && nav.classList.contains('active')) {
-        cerrarMenu();
-      }
-      
-      if (dropdown && dropdown.classList.contains('active') && window.innerWidth > 900) {
-        dropdown.classList.remove('active');
-        if (dropdownBtn) dropdownBtn.querySelector('i').style.transform = 'rotate(0deg)';
-      }
-    });
-
-    // Cerrar con Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && nav.classList.contains('active')) cerrarMenu();
-    });
-  })();
-</script>
+<script src="scripts/header.js"></script>
+<script src="scripts/sobremi.js"></script>
 </body>
 </html>
